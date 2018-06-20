@@ -1,0 +1,43 @@
+﻿<robot
+  name="爪头.SLDPRT">
+  <link
+    name="hand_base.SLDPRT">
+    <inertial>
+      <origin
+        xyz="-4.3071E-18 -0.0059096 4.77958466854274E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.013336" />
+      <inertia
+        ixx="1.69048792206978E-06"
+        ixy="2.35299624289122E-22"
+        ixz="-7.52863604393964E-22"
+        iyy="2.98903665829106E-06"
+        iyz="2.34800683625242E-21"
+        izz="1.69048792206977E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/hand_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/hand_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: kuca
+    relative_path: urdf/kuca1.urdf
+  SRDF:
+    relative_path: config/kuca.srdf
+  CONFIG:
+    generated_timestamp: 1525513794

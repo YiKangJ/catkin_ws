@@ -1,0 +1,22 @@
+#port: /dev/ttyUSB0
+#baud: 1000000
+#rate: 100
+#sync_write: True
+#sync_read: False
+#read_rate: 20
+#write_rate: 20
+
+joints: {
+    base_link_link1_joint: {id: 1, neutral: 512, min_angle: -145, max_angle: 145},
+    link1_link2_joint: {id: 2, neutral: 512, min_angle: -90, max_angle: 90},
+    link2_link3_joint: {id: 3, neutral: 512, invert: True},
+    link3_hand_joint: {id: 4, neutral: 512, min_angle: -90, max_angle: 90},
+    hand_vt_hand_joint: {id: 5, neutral: 512, min_angle: -90, max_angle: 90},
+    #right_gripper_finger_joint: {id: 9, neutral: 512}
+}
+
+controllers: {
+  #base_controller: {type: diff_controller, base_frame_id: base_footprint, base_width: 0.26, ticks_meter: 4100, Kp: 12, Kd: 12, Ki: 0, Ko: 50, accel_limit: 1.0 },
+  arm_controller: {onboard: False, action_name: arm_controller/follow_joint_trajectory, type: follow_controller, joints: [base_link_link1_joint, link1_link2_joint, link2_link3_joint, link3_hand_joint, hand_vt_hand_joint]},
+  #head_controller: {onboard: False, action_name: head_controller/follow_joint_trajectory, type: follow_controller, joints: [head_pan_joint, head_tilt_joint]}
+}

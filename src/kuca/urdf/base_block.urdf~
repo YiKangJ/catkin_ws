@@ -1,0 +1,43 @@
+﻿<robot
+  name="底板.SLDPRT">
+  <link
+    name="base_footprint.SLDPRT">
+    <inertial>
+      <origin
+        xyz="1.037E-17 7.83691112281593E-18 0.0082118"
+        rpy="0 0 0" />
+      <mass
+        value="1.4148" />
+      <inertia
+        ixx="0.0114960388311253"
+        ixy="1.89424360274643E-19"
+        ixz="2.69057794485044E-19"
+        iyy="0.0114960388311253"
+        iyz="5.63211128145318E-19"
+        izz="0.0229111452195995" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/base_block.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/base_block.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

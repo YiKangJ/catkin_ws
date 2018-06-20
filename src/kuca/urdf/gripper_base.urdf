@@ -1,0 +1,43 @@
+<robot
+  name="gripper.SLDPRT">
+  <link
+    name="gripper_base">
+    <inertial>
+      <origin
+        xyz="2.3164E-19 8.88976163462408E-19 0.011563"
+        rpy="0 0 0" />
+      <mass
+        value="0.0091416" />
+      <inertia
+        ixx="5.60915290578536E-07"
+        ixy="-3.0881409535313E-23"
+        ixz="-2.26976902761232E-23"
+        iyy="8.10915290578536E-07"
+        iyz="-1.05731144748763E-23"
+        izz="8.0707963267949E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/gripper_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/gripper_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

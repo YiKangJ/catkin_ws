@@ -1,0 +1,43 @@
+﻿<robot
+  name="关节2.SLDPRT">
+  <link
+    name="shoulder.SLDPRT">
+    <inertial>
+      <origin
+        xyz="0.0026224 -0.010587 0.12449"
+        rpy="0 0 0" />
+      <mass
+        value="6.8543" />
+      <inertia
+        ixx="0.0603332762386758"
+        ixy="-0.000112250807649033"
+        ixz="0.000740664456382333"
+        iyy="0.0888387681852521"
+        iyz="0.00782667396558345"
+        izz="0.0647349454810532" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/shoulder.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/shoulder.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

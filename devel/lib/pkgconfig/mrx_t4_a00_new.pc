@@ -1,0 +1,8 @@
+prefix=/home/jyk/catkin_ws/devel
+
+Name: mrx_t4_a00_new
+Description: Description of mrx_t4_a00_new
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/jyk/catkin_ws/devel/lib 
+Requires: 

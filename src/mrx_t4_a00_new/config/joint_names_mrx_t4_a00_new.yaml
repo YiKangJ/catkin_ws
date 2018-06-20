@@ -1,0 +1,1 @@
+controller_joint_names: ['base_to_armA', 'armA_to_armB', 'armB_to_armC', 'armC_to_armD', ]

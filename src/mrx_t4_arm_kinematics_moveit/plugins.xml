@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ASCII'?>
+<library path="lib/libmrx_t4_arm_kinematics_moveit">
+        <class name="mrx_t4_arm_kinematics_moveit/KinematicsPlugin" type="mrx_t4_arm_kinematics_moveit::KinematicsPlugin"
+      base_class_type="kinematics::KinematicsBase">
+    <description>
+      MoveIt! kinematics plugin for the arm of the Megarobo mrx_t4.
+    </description>
+  </class>
+</library>

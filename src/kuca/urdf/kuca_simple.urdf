@@ -1,0 +1,455 @@
+<?xml version="1.0" ?>
+<robot name="kuca">
+  <material name="DarkGrey">
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+  <material name="Red">
+    <color rgba="0.8 0.1 0.1 1.0"/>
+  </material>
+  <material name="Black">
+    <color rgba="0 0 0 1.0"/>
+  </material>
+  <material name="Orange">
+    <color rgba="1.46 0.18 0 1.0"/>
+  </material>
+  <material name="Purple">
+    <color rgba="0.28 0 1 1.0"/>
+  </material>
+  <material name="Silver">
+    <color rgba="0.7 0.7 0.7 1.0"/>
+  </material>
+  <material name="Blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+  <material name="HandGray">
+    <color rgba="0.953 0.996 0.694 1.0"/>
+  </material>
+  <material name="SickBlue">
+    <color rgba="0.3058 0.5921 0.7294 1.0"/>
+  </material>
+  <property name="M_PI" value="3.1415926535897931" />
+
+  <link name="base_footprint"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint" />
+    <child link="base_block" />
+  </joint>
+  <link name="base_block">
+    <inertial>
+      <origin
+        xyz="1.037E-17 7.83691112281593E-18 0.0082118"
+        rpy="0 0 0" />
+      <mass
+        value="1.4148" />
+      <inertia
+        ixx="0.0114960388311253"
+        ixy="1.89424360274643E-19"
+        ixz="2.69057794485044E-19"
+        iyy="0.0114960388311253"
+        iyz="5.63211128145318E-19"
+        izz="0.0229111452195995" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/base_block.STL" />
+      </geometry>
+      <material
+        name="DarkGrey">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/base_block.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link
+    name="base">
+    <inertial>
+      <origin
+        xyz="5.6349E-05 -0.04397 -0.017791"
+        rpy="0 0 0" />
+      <mass
+        value="10.172" />
+      <inertia
+        ixx="0.102023800624414"
+        ixy="-0.000107116174504951"
+        ixz="-9.75248573495788E-06"
+        iyy="0.062609943615707"
+        iyz="-0.00142550304062349"
+        izz="0.0916918280232079" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/base.STL" />
+      </geometry>
+      <material
+        name="Blue">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/base.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link
+    name="shoulder_link">
+    <inertial>
+      <origin
+        xyz="0.0026224 -0.010587 0.12449"
+        rpy="0 0 0" />
+      <mass
+        value="6.8543" />
+      <inertia
+        ixx="0.0603332762386758"
+        ixy="-0.000112250807649033"
+        ixz="0.000740664456382333"
+        iyy="0.0888387681852521"
+        iyz="0.00782667396558345"
+        izz="0.0647349454810532" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/shoulder.STL" />
+      </geometry>
+      <material
+        name="Silver">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/shoulder.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+
+
+  <link
+    name="arm_b">
+    <inertial>
+      <origin
+        xyz="0.00011216 2.06500000013295E-07 0.21713"
+        rpy="0 0 0" />
+      <mass
+        value="11.489" />
+      <inertia
+        ixx="0.331397608900224"
+        ixy="2.49938270567373E-08"
+        ixz="-0.000215486662794939"
+        iyy="0.344625387728064"
+        iyz="-1.88762475058406E-07"
+        izz="0.0590170414718575" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/arm_b.STL" />
+      </geometry>
+      <material
+        name="SickBlue">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/arm_b.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link
+    name="elbow_link">
+    <inertial>
+      <origin
+        xyz="-4.7606E-07 -0.01528 0.0092017"
+        rpy="0 0 0" />
+      <mass
+        value="2.755" />
+      <inertia
+        ixx="0.0104371376924703"
+        ixy="2.6533905193E-08"
+        ixz="-4.60729058315338E-08"
+        iyy="0.00758558375613676"
+        iyz="0.00135288427713708"
+        izz="0.00932285267361665" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/elbow.STL" />
+      </geometry>
+      <material
+        name="Silver">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/elbow.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link
+    name="arm_s">
+    <inertial>
+      <origin
+        xyz="0.13364 -0.00024742 0.00047158"
+        rpy="0 0 0" />
+      <mass
+        value="2.7294" />
+      <inertia
+        ixx="0.00460008200188941"
+        ixy="3.62991158649236E-05"
+        ixz="-5.99299167518797E-05"
+        iyy="0.0196337744489857"
+        iyz="3.41608949422413E-05"
+        izz="0.0199430288231592" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/arm_s.STL" />
+      </geometry>
+      <material
+        name="Orange">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/arm_s.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link
+    name="hand_base">
+    <inertial>
+      <origin
+        xyz="-4.3071E-18 -0.0059096 4.77958466854274E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.013336" />
+      <inertia
+        ixx="1.69048792206978E-06"
+        ixy="2.35299624289122E-22"
+        ixz="-7.52863604393964E-22"
+        iyy="2.98903665829106E-06"
+        iyz="2.34800683625242E-21"
+        izz="1.69048792206977E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/hand_base.STL" />
+      </geometry>
+      <material
+        name="Purple">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/hand_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <link
+    name="wrist_link">
+    <inertial>
+      <origin
+        xyz="0.0020848 -0.015368 3.4479000000941E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.44218" />
+      <inertia
+        ixx="0.000527507627789706"
+        ixy="1.79837648816872E-05"
+        ixz="-7.11888768534321E-10"
+        iyy="0.00031938655071935"
+        iyz="-5.96429677534505E-10"
+        izz="0.000560139929899567" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/wrist.STL" />
+      </geometry>
+      <material
+        name="Silver">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="fixed_joint" type="fixed">
+    <origin xyz="0 0 0.14336"/>
+    <parent link="base_block"/>
+    <child link="base"/>
+  </joint>
+  <joint name="base_shoulder_joint" type="revolute">
+    <origin xyz="0 0 0.08657"/>
+    <limit lower="-2.7925" upper="2.7925" velocity="1.571" effort="1.0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="base"/>
+    <child link="shoulder_link"/>
+  </joint>
+  <joint name="shoulder_armb_joint" type="continuous">
+    <origin xyz="0.03487 -0.0028 0.19512"/>
+    <axis xyz="0 1 0" />
+    <parent link="shoulder_link"/>
+    <child link="arm_b"/>
+  </joint>  
+  <joint name="armb_elbow_joint" type="continuous">
+    <origin xyz="0 0 0.46634"/>
+    <axis xyz="0 1 0" />
+    <parent link="arm_b"/>
+    <child link="elbow_link"/>
+  </joint>  
+  <joint name="elbow_arms_joint" type="continuous">
+    <origin xyz="0.1165 0 0.035"/>
+    <axis xyz="1 0 0" />
+    <parent link="elbow_link"/>
+    <child link="arm_s"/>
+  </joint>  
+  <joint name="arms_handbase_joint" type="continuous">
+    <origin xyz="0.303 0 0"/>
+    <axis xyz="0 1 0" />
+    <parent link="arm_s"/>
+    <child link="wrist_link"/>
+  </joint>
+  <joint name="handbase_wrist_joint" type="continuous">
+    <origin xyz="0.066252 0 0"/>
+    <axis xyz="1 0 0" />
+    <parent link="wrist_link"/>
+    <child link="hand_base"/>
+  </joint>
+
+  
+  <link name="gripper_base">
+    <inertial>
+      <origin
+        xyz="2.3164E-19 8.88976163462408E-19 0.011563"
+        rpy="0 0 0" />
+      <mass
+        value="0.0091416" />
+      <inertia
+        ixx="5.60915290578536E-07"
+        ixy="-3.0881409535313E-23"
+        ixz="-2.26976902761232E-23"
+        iyy="8.10915290578536E-07"
+        iyz="-1.05731144748763E-23"
+        izz="8.0707963267949E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/gripper_base.STL" />
+      </geometry>
+      <material
+        name="Silver">
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 -1.5707963267949" />
+      <geometry>
+        <mesh
+          filename="package://kuca/meshes/gripper_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="handbase_gripperbase_joint" type="fixed">
+    <origin xyz="0.0060 0 0"/>
+    <parent link="hand_base"/>
+    <child link="gripper_base"/>
+  </joint>
+
+  <joint name="gripper_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.030 0 0"/>
+    <parent link="gripper_base"/>
+    <child link="gripper_link"/>
+  </joint>
+  <link name="gripper_link"/>
+
+</robot>
+
+
+

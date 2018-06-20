@@ -1,0 +1,43 @@
+﻿<robot
+  name="爪头座.SLDPRT">
+  <link
+    name="wrist.SLDPRT">
+    <inertial>
+      <origin
+        xyz="0.0020848 -0.015368 3.4479000000941E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.44218" />
+      <inertia
+        ixx="0.000527507627789706"
+        ixy="1.79837648816872E-05"
+        ixz="-7.11888768534321E-10"
+        iyy="0.00031938655071935"
+        iyz="-5.96429677534505E-10"
+        izz="0.000560139929899567" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

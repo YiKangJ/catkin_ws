@@ -1,0 +1,43 @@
+﻿<robot
+  name="小臂.SLDPRT">
+  <link
+    name="arm_s.SLDPRT">
+    <inertial>
+      <origin
+        xyz="0.13364 -0.00024742 0.00047158"
+        rpy="0 0 0" />
+      <mass
+        value="2.7294" />
+      <inertia
+        ixx="0.00460008200188941"
+        ixy="3.62991158649236E-05"
+        ixz="-5.99299167518797E-05"
+        iyy="0.0196337744489857"
+        iyz="3.41608949422413E-05"
+        izz="0.0199430288231592" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/arm_s.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="kuka://meshes/arm_s.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

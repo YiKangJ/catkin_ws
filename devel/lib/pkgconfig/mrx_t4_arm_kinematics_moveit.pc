@@ -1,0 +1,8 @@
+prefix=/home/jyk/catkin_ws/devel
+
+Name: mrx_t4_arm_kinematics_moveit
+Description: Description of mrx_t4_arm_kinematics_moveit
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/jyk/catkin_ws/devel/lib 
+Requires: 

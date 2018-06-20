@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <param name="/robot_description" type="str"
+        textfile="$(find mrx_t4_arm_kinematics_moveit)/test/mrx_t4_a00_new.urdf"
+    />
+
+    <test test-name="mrx_t4_arm_kinematics_moveit_test"
+        pkg="mrx_t4_arm_kinematics_moveit"
+        type="mrx_t4_arm_kinematics_moveit_test" />
+
+</launch>

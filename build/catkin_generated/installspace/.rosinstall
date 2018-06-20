@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/jyk/catkin_ws/install/setup.sh

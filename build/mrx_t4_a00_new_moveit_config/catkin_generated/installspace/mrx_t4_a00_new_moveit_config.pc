@@ -1,0 +1,8 @@
+prefix=/home/jyk/catkin_ws/install
+
+Name: mrx_t4_a00_new_moveit_config
+Description: Description of mrx_t4_a00_new_moveit_config
+Version: 0.3.0
+Cflags: 
+Libs: -L/home/jyk/catkin_ws/install/lib 
+Requires: 

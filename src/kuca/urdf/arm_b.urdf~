@@ -1,0 +1,43 @@
+﻿<robot
+  name="大臂.SLDPRT">
+  <link
+    name="arm_b.SLDPRT">
+    <inertial>
+      <origin
+        xyz="0.00011216 2.06500000013295E-07 0.21713"
+        rpy="0 0 0" />
+      <mass
+        value="11.489" />
+      <inertia
+        ixx="0.331397608900224"
+        ixy="2.49938270567373E-08"
+        ixz="-0.000215486662794939"
+        iyy="0.344625387728064"
+        iyz="-1.88762475058406E-07"
+        izz="0.0590170414718575" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_b.SLDPRT/meshes/arm_b.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.82353 0.93725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://arm_b.SLDPRT/meshes/arm_b.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

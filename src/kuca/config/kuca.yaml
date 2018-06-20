@@ -1,0 +1,24 @@
+port: /dev/ttyUSB0
+baud: 1000000
+rate: 100
+sync_write: True
+sync_read: False
+read_rate: 20
+write_rate: 20
+
+joints: {
+  base_shoulder_joint: {id: 1, ticks: 4096, neutral: 2048, min_angle: -160, max_angle: 160},
+    shoulder_armb_joint: {id: 2, ticks: 4096, neutral: 2048, min_angle: -180, max_angle: 180},
+    armb_elbow_joint: {id: 3, ticks: 4096, neutral: 2048, min_angle: -180, max_angle: 180},
+    elbow_arms_joint: {id: 4, ticks: 4096, neutral: 2048, min_angle: -180, max_angle: 180},
+    arms_handbase_joint: {id: 5, ticks: 4096, neutral: 2048, min_angle: -180, max_angle: 180},
+    handbase_wrist_joint: {id: 6, ticks: 4096, neutral: 2048, min_angle: -180, max_angle: 180},
+    gripper_active_finger_joint: {id: 7, ticks: 4096, neutral: 2048, min_angle: -180, max_angle: 180}
+}
+
+controllers: {
+  #base_controller: {type: diff_controller, base_frame_id: base_footprint, base_width: 0.26, ticks_meter: 4100, Kp: 12, Kd: 12, Ki: 0, Ko: 50, accel_limit: 1.0 },
+  arm_controller: {onboard: False, action_name: arm_controller/follow_joint_trajectory, type: follow_controller, joints: [base_shoulder_joint, shoulder_armb_joint, armb_elbow_joint, elbow_arms_joint, arms_handbase_joint, handbase_wrist_joint]},
+  #head_controller: {onboard: False, action_name: head_controller/follow_joint_trajectory, type: follow_controller, joints: [head_pan_joint, head_tilt_joint]}
+  #
+}
