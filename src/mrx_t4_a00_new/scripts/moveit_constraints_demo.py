@@ -30,8 +30,7 @@ class MoveItDemo:
         right_arm.set_pose_reference_frame(REFERENCE_FRAME)
                 
         # Allow some leeway in position(meters) and orientation (radians)
-        right_arm.set_goal_position_tolerance(0.0001)
-        right_arm.set_goal_orientation_tolerance(0.001)
+        right_arm.set_goal_tolerance(0.00001)
         
         # Get the name of the end-effector link
         end_effector_link = right_arm.get_end_effector_link()
@@ -44,15 +43,15 @@ class MoveItDemo:
         rospy.sleep(1)
         
         # Set an initial target pose with the arm up and to the right
-        target_pose = right_arm.get_current_pose()
+        target_pose = PoseStamped()
         target_pose.header.frame_id = REFERENCE_FRAME
         target_pose.pose.position.x = 0.4
-        target_pose.pose.position.y = 0
+        target_pose.pose.position.y = 0.3
         target_pose.pose.position.z = 0.4
-       # target_pose.pose.orientation.x = 0.707107
-       # target_pose.pose.orientation.y = 0
-       # target_pose.pose.orientation.z = 0
-       # target_pose.pose.orientation.w = 0.707107
+        target_pose.pose.orientation.x = 0.670820393249937
+        target_pose.pose.orientation.y = 0.223606797749979
+        target_pose.pose.orientation.z = 0.223606797749979
+        target_pose.pose.orientation.w = 0.670820393249937
 
         # Set the start state and target pose, then plan and execute
         right_arm.set_pose_target(target_pose, end_effector_link)
@@ -71,11 +70,11 @@ class MoveItDemo:
         orientation_constraint = OrientationConstraint()
         orientation_constraint.header = start_pose.header
         orientation_constraint.link_name = end_effector_link
-        orientation_constraint.absolute_x_axis_tolerance = 0.1
-        orientation_constraint.absolute_y_axis_tolerance = 0.1
-        orientation_constraint.absolute_z_axis_tolerance = 3.14
+        orientation_constraint.absolute_x_axis_tolerance = 0.00001
+        orientation_constraint.absolute_y_axis_tolerance = 3.14
+        orientation_constraint.absolute_z_axis_tolerance = 0.00001
         orientation_constraint.weight = 1.0
-        
+        orientation_constraint.orientation = start_pose.pose.orientation   
         # Append the constraint to the list of contraints
         constraints.orientation_constraints.append(orientation_constraint)
           
@@ -85,9 +84,13 @@ class MoveItDemo:
         # Set a target pose for the arm        
         target_pose = deepcopy(start_pose) 
         target_pose.header.frame_id = REFERENCE_FRAME
-        target_pose.pose.position.x = 0.3
+        target_pose.pose.position.x = 0.4
         target_pose.pose.position.y = -0.3
         target_pose.pose.position.z = 0.4
+        target_pose.pose.orientation.x = 0.670820393249937 
+        target_pose.pose.orientation.y = -0.223606797749979
+        target_pose.pose.orientation.z = -0.223606797749979
+        target_pose.pose.orientation.w = 0.670820393249937
         #target_pose.pose.orientation.x = 0.707107
         #target_pose.pose.orientation.y = 0
         #target_pose.pose.orientation.z = 0
@@ -116,6 +119,9 @@ class MoveItDemo:
         
         # Exit MoveIt
         moveit_commander.os._exit(0)
+
+        def getOrientation(self,xyz):
+            pass
 
 if __name__ == "__main__":
     try:

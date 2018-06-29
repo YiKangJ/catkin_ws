@@ -39,7 +39,7 @@ int main()
 	double l4 = 0.150 ;
 	double l5 = 0 ;
 	double l6 = 0 ;
-
+    double error = 1e-7;
 	min_angles.resize(4,0.0) ;
 	min_angles[0] = -2.757620 ;
 	min_angles[1] =  0 ;
@@ -56,21 +56,22 @@ int main()
     KDL::Frame goal;
     KDL::Rotation rot;
 
-    goal.p.x(0.0151494);
-    goal.p.y(-0.00695572);
-    goal.p.z(0.715798);
-    const KDL::Vector  UX(1,0,0);
+    goal.p.x(0.312);
+    goal.p.y(0.247);
+    goal.p.z(0.362);
+    const KDL::Vector  UX(0.784045824462, 0.62070294437, 0);
     const KDL::Vector  UY(0,0,1);
-    const KDL::Vector  UZ(0,-1,0); 
+    const KDL::Vector  UZ(0.620702944366, -0.784045824462, 0); 
     goal.M = KDL::Rotation(UX,UY,UZ);
 	goal.M.GetQuaternion(x, y, z, w);
 /*
-    goal.p.x(0.655);
+    goal.p.x(0.4);
     goal.p.y(0);
-    goal.p.z(0.257);
+    goal.p.z(0.4);
    
-    goal.M = rot.Quaternion(0.70710678, 0, 0, 0.70710678);
+    goal.M = rot.Quaternion(0.707107, -1.29868e-6, -1.29867e-6, 0.707107);
 
+	goal.M.GetQuaternion(x, y, z, w);
  
     goal.p.x(0.132938660994);
     goal.p.y(-0.0955394659395);
@@ -128,11 +129,29 @@ int main()
   	sstr << setprecision(15) << posIn11 << " " << posIn12 << " " << posIn13 << " " << posIn14 << endl;
   	sstr << setprecision(15) << posIn21 << " " << posIn22 << " " << posIn23 << " " << posIn24 << endl;
  	 sstr << setprecision(15) << posIn31 << " " << posIn32 << " " << posIn33 << " " << posIn34 << endl; 
-    double bx,by,bz,c1,s1,c2,s2,A,B,C,det,s3,c3,error=1e-7;
+    
+    double bx,by,bz,c1,s1,c2,s2,A,B,C,det,s3,c3,nx,ny,px,py;
     bool flag,flag1,flag2;
     bool mark[2]={true, true};
 sstr << "atan2: " << atan2(posIn13, posIn23) << endl;
 	double a = 0;
+    // new added
+    s1 = posIn13;
+    c1 = -posIn23;
+    px = posIn14;
+    py = posIn24;
+    nx = posIn11;
+    ny = posIn21;
+    if (!((fabs((px - s1*l5)*s1 - (py + c1*l5)*c1) <= 1e-5) && (fabs(nx*s1 - ny*c1) <= 1e-5)))
+    {
+        sstr << "Input pose matrix is unvalid." << std::endl ;
+        sstr << "px*s1:" << px << "," << s1 << "," << px*s1 << endl;
+        sstr << "py*c1:" << py << ',' << c1 << "," << py*c1 << endl;
+        sstr << (fabs((px - s1*l5)*s1 - (py + c1*l5)*c1)) <<std::endl;
+        sstr << (fabs(nx*s1 - ny*c1)) << endl;
+        cout << sstr.str() << endl;
+        return -1;
+    }
     if (fabs(posIn23) == 0) posOrg11 = atan2(posIn13, fabs(posIn23));
 	else posOrg11 = atan2(posIn13,-posIn23);
     posOrg12 = posOrg11;

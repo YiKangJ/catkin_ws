@@ -17,8 +17,6 @@ using namespace mrx_t4_arm_kinematics;
 
 #define DEG_TO_RAD(x) ((x) * M_PI / 180.0)
 
-const double InverseKinematics::ALMOST_PLUS_ONE = 0.9999999;
-const double InverseKinematics::ALMOST_MINUS_ONE = -0.9999999;
 const double error = 1e-7;
 
 std::stringstream sstr;
@@ -42,12 +40,14 @@ int InverseKinematics::CartToJnt(const KDL::JntArray &q_init,
 {	
 
     std::vector<KDL::JntArray> solution(2);
-    
+    /*    
 	for (unsigned int i=0;i<solution.size();i++)
         for (unsigned int j=0;j<solution[i].rows();j++) 
         {
             solution[i](j) = INVALID;
         }
+    */
+
     // there are no solutions available yet
     q_out.clear();
 
@@ -80,20 +80,23 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 	double l6 = 0 ;
 	
     std::vector<KDL::JntArray> solution(2, KDL::JntArray(4));
-    double R,P,Y ;
+    double x,y,z,w ;
 	KDL::Frame goal = g0 ;
 
-    sstr << "Goal Position is: "
+    sstr << std::setprecision(15)
+            << "Goal Position is: "
     		<< goal.p[0] << ","
     		<< goal.p[1] << ","
 			<< goal.p[2]
 			<< std::endl ;
 
-    goal.M.GetRPY(R,P,Y) ;
-    sstr << "RPY is: "
-        		<< R << ","
-        		<< P << ","
-    			<< Y
+    goal.M.GetQuaternion(x,y,z,w) ;
+    sstr << std::setprecision(15)
+                << "Quat is: "
+        		<< x << ","
+        		<< y << ","
+    			<< z << ","
+                << w
     			<< std::endl ;
 
 	// Joint 1
@@ -123,9 +126,31 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     double posOrg41 = 0;
     double posOrg42 = 0;
     
-    double bx,by,bz,c1,s1,c2,s2,A,B,C,det,s3,c3;
+    double bx,by,bz,c1,s1,c2,s2,A,B,C,det,s3,c3,px,py,nx,ny;
     bool flag,flag1,flag2;
     bool mark[2] = {true, true};
+
+	// init
+    for (unsigned int i=0;i<solution.size();i++)
+        for (unsigned int j=0;j<solution[i].rows();j++) 
+        {
+            solution[i](j) = INVALID;
+        }
+    
+    // new added
+    s1 = posIn13;
+    c1 = -posIn23;
+    px = posIn14;
+    py = posIn24;
+    nx = posIn11;
+    ny = posIn21;
+    if (!((fabs((px - s1*l5)*s1 - (py + c1*l5)*c1) <= 1e-5) && (fabs(nx*s1 - ny*c1) <= 1e-5)))
+    {
+        sstr << "Input pose matrix is invalid." << std::endl ;
+    	logger_.write(sstr.str(), __FILE__, __LINE__);
+        ROS_INFO("%s", sstr.str().c_str());
+        return solution;
+    }
 
 	if (fabs(posIn23) == 0) posOrg11 = atan2(posIn13, fabs(posIn23));
 	else posOrg11 = atan2(posIn13, -posIn23);
@@ -167,6 +192,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     {
 		sstr << "Argument for j3 is out of range. No solution exists:Point is unreachable" << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
+        ROS_INFO("%s","j3");
         return solution;
     }
    
@@ -249,6 +275,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     {
         sstr << "No valid solution:Point is unreachable.**************************************************************************************************************************************************************************************************************************" << std::endl ;
         logger_.write(sstr.str(), __FILE__, __LINE__);
+        ROS_INFO("%s","No valid");
         return solution;
     }
     
@@ -285,6 +312,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
         */
 		sstr << "Can't find a reasonable solution. No solution exists:Point is unreachable. *******************************************************************************************************************************************************************************************" << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
+        ROS_INFO("%s","Cant find");
         return solution;
     } else if (temp>0)
     {
@@ -333,6 +361,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 
 	logger_.write(sstr.str(), __FILE__, __LINE__);
 
+    //ROS_INFO("%s","succes");
 	return solution ;
 
 }

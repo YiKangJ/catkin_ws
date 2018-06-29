@@ -137,13 +137,13 @@ TEST(mrx_t4_arm_kinematics_moveit, find_solution_for_candle_configuration)
     std::vector<double> solution;
     moveit_msgs::MoveItErrorCodes error_code;
 
-    pose.position.x = 0.5;
-    pose.position.y = 0.3;
-    pose.position.z = 0.3;
-    pose.orientation.x = 0.707106781186547;
-    pose.orientation.y = 0;
-    pose.orientation.z = 0;
-    pose.orientation.w = 0.707106781186548;
+    pose.position.x = 0.400001;
+    pose.position.y = -3.4276e-6;
+    pose.position.z = 0.400007;
+    pose.orientation.x = 0.707104;
+    pose.orientation.y = -4.19318e-6;
+    pose.orientation.z = -9.11915e-7;
+    pose.orientation.w = 0.707109;
    /* 
     pose.position.x = 0.655;
     pose.position.y = 0;

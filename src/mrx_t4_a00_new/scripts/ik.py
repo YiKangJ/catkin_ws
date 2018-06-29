@@ -17,15 +17,6 @@ def move_group_python_interface_tutorial():
 
   arm = moveit_commander.MoveGroupCommander("arm")
 
-
-  ## We create this DisplayTrajectory publisher which is used below to publish
-  ## trajectories for RVIZ to visualize.
-  display_trajectory_publisher = rospy.Publisher(
-                                      '/move_group/display_planned_path',
-                                      moveit_msgs.msg.DisplayTrajectory,
-                                      queue_size=20)
-
-
   ## We can get the name of the reference frame for this robot
   print "============ Reference frame: %s" % arm.get_planning_frame()
 
@@ -33,7 +24,7 @@ def move_group_python_interface_tutorial():
   end_effector_link = arm.get_end_effector_link()
   print "============ End effector: %s" % end_effector_link
     
-  arm.set_goal_tolerance(0.0001);
+  arm.set_goal_tolerance(0.00001);
   #arm.set_planner_id("BKPIECEkConfigDefault") 2
   #arm.set_planner_id("BFMTkConfigDefault") 2
   #arm.set_planner_id("BiESTkConfigDefault")
@@ -45,99 +36,148 @@ def move_group_python_interface_tutorial():
   arm.go()
   rospy.sleep(1)
 
-  joint_positions = [0, 0.909948481767, -1.59570870752, 0.68576022575]
   pose_target = geometry_msgs.msg.Pose()
-  '''
-  pose_target.position.x = 0.132938660994
-  pose_target.position.y = -0.0955394659395
-  pose_target.position.z = 0.818050660634
+  '''  
+  pose_target.position.x = 0.4
+  pose_target.position.y = -0.3
+  pose_target.position.z = 0.4
 
-  pose_target.orientation.x = 0.568943188752
-  pose_target.orientation.y = -0.419889964574
-  pose_target.orientation.z =  0.00894212272965
-  pose_target.orientation.w = 0.707047455312
+  pose_target.orientation.x = 0.670820393249937
+  pose_target.orientation.y = -0.223606797749979
+  pose_target.orientation.z = -0.223606797749979
+  pose_target.orientation.w = 0.670820393249937
+  
+  arm.set_start_state_to_current_state()
+  arm.set_pose_target(pose_target)
+
+  arm.go()
+  rospy.sleep(3)
+  print arm.get_current_pose()
+  print '-'*30
+  
+  pose_target.position.x = 0.4
+  pose_target.position.y = -0.2
+  pose_target.position.z = 0.4
+
+  pose_target.orientation.x = 0.688190960235602
+  pose_target.orientation.y = -0.162459848116465
+  pose_target.orientation.z = -0.162459848116465
+  pose_target.orientation.w = 0.688190960235602
+  
+  arm.set_start_state_to_current_state()
+  arm.set_pose_target(pose_target)
+
+  arm.go()
+  #rospy.sleep(1)
+  print arm.get_current_pose()
+  print '-'*30
   '''
-  pose_target.position.x = 0.5
-  pose_target.position.y = 0.3
-  pose_target.position.z = 0.3
+  pose_target.position.x = 0.312
+  pose_target.position.y = 0.247
+  pose_target.position.z = 0.364
+  pose_target.orientation.x = 0.667840891317311
+  pose_target.orientation.y = 0.232354349829369
+  pose_target.orientation.z = 0.232354349830866
+  pose_target.orientation.w = 0.667840891317311
+  arm.set_start_state_to_current_state()
+  arm.set_pose_target(pose_target)
+
+  arm.go()
+  '''
+  pose_target.position.x = 0.4
+  pose_target.position.y = -0.1
+  pose_target.position.z = 0.4
+
+  pose_target.orientation.x = 0.701808823710204
+  pose_target.orientation.y = -0.0863966142936918
+  pose_target.orientation.z = -0.0863966142936918
+  pose_target.orientation.w = 0.701808823710204
+  
+  arm.set_start_state_to_current_state()
+  arm.set_pose_target(pose_target)
+
+  arm.go()
+  #rospy.sleep(1)
+  print arm.get_current_pose()
+  print '-'*30
+  
+  
+  pose_target.position.x = 0.4
+  pose_target.position.y = 0
+  pose_target.position.z = 0.4
 
   pose_target.orientation.x = 0.707106781186547
-  pose_target.orientation.y = 0.0
-  pose_target.orientation.z = 0.0
-  pose_target.orientation.w = 0.707106781186547
-  
-  arm.set_start_state_to_current_state()
-  #arm.set_pose_target(pose_target)
-  arm.set_joint_value_target(joint_positions)
-
-  arm.go()
-  rospy.sleep(3)
-  '''  
-  pose_target.position.x = 0.0151494
-  pose_target.position.y = -0.00695572
-  pose_target.position.z = 0.715798
-
-  pose_target.orientation.x = 0
   pose_target.orientation.y = 0
   pose_target.orientation.z = 0
-  pose_target.orientation.w = 1
-  
-  pose_target.position.x = 0.00663386513978
-  pose_target.position.y = 0.00628765005211
-  pose_target.position.z = 0.86011464552
-
-  pose_target.orientation.x = -0.470078484577
-  pose_target.orientation.y = -0.528233012237
-  pose_target.orientation.z = -0.0603648311788
-  pose_target.orientation.w = 0.704522668391
+  pose_target.orientation.w = 0.707106781186548
   
   arm.set_start_state_to_current_state()
   arm.set_pose_target(pose_target)
-  #arm.set_joint_value_target(joint_positions)
 
   arm.go()
-  rospy.sleep(3)
+  #rospy.sleep(1)
+  print arm.get_current_pose()
+  print '-'*30
+  
 
-  pose_target.position.x = 0.209690939587
-  pose_target.position.y = -0.211907873744
-  pose_target.position.z = 0.235437784057
+  pose_target.position.x = 0.4
+  pose_target.position.y = 0.1
+  pose_target.position.z = 0.4
 
-  pose_target.orientation.x = 0.575017427409
-  pose_target.orientation.y = -0.411526317144
-  pose_target.orientation.z = -0.119272325492
-  pose_target.orientation.w = 0.696975724718
+  pose_target.orientation.x = 0.701808823710204
+  pose_target.orientation.y = 0.0863966142936918
+  pose_target.orientation.z = 0.0863966142936918
+  pose_target.orientation.w = 0.701808823710204
   
   arm.set_start_state_to_current_state()
   arm.set_pose_target(pose_target)
-  #arm.set_joint_value_target(joint_positions)
 
   arm.go()
-  rospy.sleep(3)
+  #rospy.sleep(1)
+  print arm.get_current_pose()
+  print '-'*30
+  
+  pose_target.position.x = 0.4
+  pose_target.position.y = 0.2
+  pose_target.position.z = 0.4
 
-  pose_target.position.x = -0.504417518865
-  pose_target.position.y = -0.0699290237893
-  pose_target.position.z = 0.474962674352
-
-  pose_target.orientation.x = 0.0019269065365
-  pose_target.orientation.y = 0.707103498593
-  pose_target.orientation.z = -0.700141412041
-  pose_target.orientation.w = 0.099009759386
+  pose_target.orientation.x = 0.688190960235602
+  pose_target.orientation.y = 0.162459848116465
+  pose_target.orientation.z = 0.162459848116465
+  pose_target.orientation.w = 0.688190960235602
   
   arm.set_start_state_to_current_state()
   arm.set_pose_target(pose_target)
-  #arm.set_joint_value_target(joint_positions)
 
   arm.go()
-  rospy.sleep(3)
+  #rospy.sleep(1)
+  print arm.get_current_pose()
+  print '-'*30
   
+  
+  pose_target.position.x = 0.4
+  pose_target.position.y = 0.3
+  pose_target.position.z = 0.4
+
+  pose_target.orientation.x = 0.670820393249937
+  pose_target.orientation.y = 0.223606797749979
+  pose_target.orientation.z = 0.223606797749979
+  pose_target.orientation.w = 0.670820393249937
+  
+  arm.set_start_state_to_current_state()
+  arm.set_pose_target(pose_target)
+
+  arm.go()
+  #rospy.sleep(1)
+  print arm.get_current_pose()
+  print '-'*30
+  '''
   arm.set_named_target("up")
   arm.go()
   rospy.sleep(1)
-  '''
+  
   ## When finished shut down moveit_commander.
   moveit_commander.roscpp_shutdown()
-
-
 
 if __name__=='__main__':
   try:

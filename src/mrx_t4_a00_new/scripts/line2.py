@@ -6,6 +6,7 @@ from control_msgs.msg import GripperCommand
 from geometry_msgs.msg import Pose
 from tf.transformations import quaternion_from_euler
 from copy import deepcopy
+from lineConstraint import lineConstraint
 
 class MoveItDemo:
     def __init__(self):
@@ -26,49 +27,35 @@ class MoveItDemo:
         rospy.loginfo("The end effector link is: " + str(end_effector_link))
         
         # Set a small tolerance on joint angles
-        right_arm.set_goal_tolerance(0.0001)
+        right_arm.set_goal_tolerance(0.000001)
         
         right_arm.set_named_target('right')
         right_arm.go()
         rospy.sleep(1)
 
-        start_pose = right_arm.get_current_pose().pose
-        start_pose.position.x = 0.4
-        start_pose.position.y = 0
-        #start_pose.position.z = 0.4
-        start_pose.orientation.x = 0.707106781186547
-        start_pose.orientation.y = 0
-        start_pose.orientation.z = 0
-        start_pose.orientation.w = 0.707106781186547
-         
-        right_arm.set_pose_target(start_pose)
-
-        right_arm.go()
-        
-        # Pause for a moment
-        rospy.sleep(1)
-        
-    #    joints_positions = [0.7, 0.2, 0.5, 1]
-    #    right_arm.set_joint_value_target(joints_positions)
-
-    #    right_arm.go()
-    #    rospy.sleep(1)
         waypoints = []
-        wpose = deepcopy(start_pose)
-        waypoints.append(deepcopy(wpose))
-
-        end_pose = deepcopy(start_pose)
-        
-        wpose.position.x += 0.05
-        wpose.position.z += 0.1
-        waypoints.append(deepcopy(wpose))
         
 
-        #wpose.position.z -= 0.15
-        #waypoints.append(deepcopy(wpose))
+        star = [[-0.0951+0.5, 0.0309+0.3], [0.0951+0.5, 0.0309+0.3], [-0.1058+0.46, 0.0344], [0.46, 0.36], [0.1058+0.46, 0.0344], [-0.1712+0.46, 0.2355]]
 
-        waypoints.append(end_pose)
-        
+        pose = right_arm.get_current_pose().pose
+        pose.position.x = star[0][0]
+        pose.position.y = 0
+        pose.position.z = star[0][1]
+        right_arm.set_pose_target(pose)
+        right_arm.go()
+        '''
+        for i in range(2):
+            pose.position.x = star[i][0]
+            pose.position.y = 0
+            pose.position.z = star[i][1]
+            waypoints.append(deepcopy(pose))
+        '''
+        waypoints.append(deepcopy(pose))
+        pose.position.x += 0.3
+        waypoints.append(deepcopy(pose))
+        print waypoints
+         
         fraction = 0.0
         maxtries = 100
         attempts = 0
@@ -98,13 +85,13 @@ class MoveItDemo:
             rospy.loginfo("Path execution complete.")
         else:
             rospy.loginfo("Path planning failed with only " + str(fraction) + " success after " + str(maxtries) + " attempts.") 
-        ''' 
+        '''
         with open ("/home/jyk/Desktop/data.txt",'w') as f:
             for point in plan.joint_trajectory.points:
                     f.write(str(point.positions).replace('(','').replace(')','').replace(',',' '))
                     f.write('\n')
         '''
-
+        
         rospy.sleep(3)
         # Return the arm to the named "resting" pose stored in the SRDF file
         right_arm.set_named_target('right')

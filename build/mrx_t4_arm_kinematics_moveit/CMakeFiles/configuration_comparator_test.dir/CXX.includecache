@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/include/mrx_t4_arm_kinematics_moveit/configuration_comparator.h
+vector
+-
+configuration_comparator.inl
+/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/include/mrx_t4_arm_kinematics_moveit/configuration_comparator.inl
+
+/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/include/mrx_t4_arm_kinematics_moveit/configuration_comparator.inl
+mrx_t4_arm_kinematics_moveit/configuration_comparator.h
+-
+exception
+-
+
+/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/configuration_comparator_test.cpp
+mrx_t4_arm_kinematics_moveit/configuration_comparator.h
+-
+gtest/gtest.h
+-
+
