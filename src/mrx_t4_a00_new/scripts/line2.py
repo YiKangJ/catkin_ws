@@ -27,7 +27,7 @@ class MoveItDemo:
         rospy.loginfo("The end effector link is: " + str(end_effector_link))
         
         # Set a small tolerance on joint angles
-        right_arm.set_goal_tolerance(0.000001)
+        right_arm.set_goal_tolerance(0.00001)
         
         right_arm.set_named_target('right')
         right_arm.go()
@@ -36,26 +36,27 @@ class MoveItDemo:
         waypoints = []
         
 
-        star = [[-0.0951+0.5, 0.0309+0.3], [0.0951+0.5, 0.0309+0.3], [-0.1058+0.46, 0.0344], [0.46, 0.36], [0.1058+0.46, 0.0344], [-0.1712+0.46, 0.2355]]
-
+        star = [[-0.0951+0.4, 0.0309+0.4], [0.0951+0.4, 0.0309+0.4], [-0.0588+0.4, -0.0809+0.4], [0+0.4, 0.1+0.4], [0.0588+0.4, -0.0809+0.4], [-0.0951+0.4, 0.0309+0.4]]
+        
         pose = right_arm.get_current_pose().pose
         pose.position.x = star[0][0]
         pose.position.y = 0
         pose.position.z = star[0][1]
         right_arm.set_pose_target(pose)
         right_arm.go()
-        '''
-        for i in range(2):
+        rospy.sleep(1)
+        #pose = Pose()
+        for i in range(6):
             pose.position.x = star[i][0]
             pose.position.y = 0
             pose.position.z = star[i][1]
             waypoints.append(deepcopy(pose))
         '''
         waypoints.append(deepcopy(pose))
-        pose.position.x += 0.3
+        pose.position.x += 0.15
         waypoints.append(deepcopy(pose))
         print waypoints
-         
+        ''' 
         fraction = 0.0
         maxtries = 100
         attempts = 0

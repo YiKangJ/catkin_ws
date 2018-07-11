@@ -19,7 +19,6 @@ using namespace mrx_t4_arm_kinematics;
 
 const double error = 1e-7;
 
-std::stringstream sstr;
 
 InverseKinematics::InverseKinematics(
         const std::vector<double> &min_angles,
@@ -82,6 +81,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     std::vector<KDL::JntArray> solution(2, KDL::JntArray(4));
     double x,y,z,w ;
 	KDL::Frame goal = g0 ;
+    std::stringstream sstr;
 
     sstr << std::setprecision(15)
             << "Goal Position is: "
@@ -192,7 +192,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     {
 		sstr << "Argument for j3 is out of range. No solution exists:Point is unreachable" << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s","j3");
+        ROS_INFO("%s", sstr.str().c_str());
         return solution;
     }
    
