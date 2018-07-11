@@ -137,6 +137,7 @@ private:
 
 }; // class end
 
+int calFixPosMatr(KDL::Vector pos_d, KDL::Vector &pos_ox, KDL::Vector &pos_oy, KDL::Vector &pos_oz);
 bool checkLim(double target, double min_angle, double max_angle);
 bool judgeNum(double &target, std::vector<double> lim, double error);
 double standard(double target);

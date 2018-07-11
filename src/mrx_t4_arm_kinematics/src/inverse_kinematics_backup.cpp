@@ -1,7 +1,7 @@
 /*
  * inverse_kinematics.cpp
  *
- *  Created on: 11-July-2018
+ *  Created on: 31-May-2018
  *      Author: YiKangJ
  */
 
@@ -12,20 +12,12 @@
 
 #define PI 3.141592653589793
 #define INVALID 500
-#define THETA 0 // 末端关节角度
-#define DISLIM 0.01 // disLim
 
 using namespace mrx_t4_arm_kinematics;
 
 #define DEG_TO_RAD(x) ((x) * M_PI / 180.0)
 
 const double error = 1e-7;
-const double l1 = 0.257 ;
-const double l2 = 0.255 ;
-const double l3 = 0.250 ;
-const double l4 = 0.150 ;
-const double l5 = 0 ;
-const double l6 = 0 ;
 
 
 InverseKinematics::InverseKinematics(
@@ -79,6 +71,12 @@ int InverseKinematics::CartToJnt(const KDL::JntArray &q_init,
 
 std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 {
+	double l1 = 0.257 ;
+	double l2 = 0.255 ;
+	double l3 = 0.250 ;
+	double l4 = 0.150 ;
+	double l5 = 0 ;
+	double l6 = 0 ;
 	
     std::vector<KDL::JntArray> solution(2, KDL::JntArray(4));
     double x,y,z,w ;
@@ -103,18 +101,9 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 
 	// Joint 1
 	KDL::Vector pos_d = goal.p ;
-    KDL::Vector pos_ox;
-    KDL::Vector pos_oy;
-    KDL::Vector pos_oz;
-
-	// init
-    for (unsigned int i=0;i<solution.size();i++)
-        for (unsigned int j=0;j<solution[i].rows();j++) 
-        {
-            solution[i](j) = INVALID;
-        }
-    
-    if (calFixPosMatr(pos_d, pos_ox, pos_oy, pos_oz) != 1) return solution;
+    KDL::Vector pos_ox = goal.M.UnitX();
+    KDL::Vector pos_oy = goal.M.UnitY();
+    KDL::Vector pos_oz = goal.M.UnitZ();
 
 	double posIn14 = pos_d[0] ;
 	double posIn24 = pos_d[1] ;
@@ -141,6 +130,12 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     bool flag,flag1,flag2;
     bool mark[2] = {true, true};
 
+	// init
+    for (unsigned int i=0;i<solution.size();i++)
+        for (unsigned int j=0;j<solution[i].rows();j++) 
+        {
+            solution[i](j) = INVALID;
+        }
     
     // new added
     s1 = posIn13;
@@ -149,7 +144,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     py = posIn24;
     nx = posIn11;
     ny = posIn21;
-    if (!((fabs((px - s1*l5)*s1 - (py + c1*l5)*c1) <= error) && (fabs(nx*s1 - ny*c1) <= 1e-5)))
+    if (!((fabs((px - s1*l5)*s1 - (py + c1*l5)*c1) <= 1e-5) && (fabs(nx*s1 - ny*c1) <= 1e-5)))
     {
         sstr << "Input pose matrix is invalid." << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
@@ -450,79 +445,4 @@ bool mrx_t4_arm_kinematics::judgePos(std::vector<double> pos, std::vector<double
         if (checkLim(pos[i], min_angles[i], max_angles[i]) == false) return false;
     }
     return true;
-}
-
-int mrx_t4_arm_kinematics::calFixPosMatr(KDL::Vector pos_d, KDL::Vector &pos_ox, KDL::Vector &pos_oy, KDL::Vector &pos_oz)
-{
-    
-    double d,theta,px,py,disLim,th2a3a4,t11,t12,temp,K,t1,r1,r2,px1,py1,px2,py2;
-    int flag;
-    
-    disLim = DISLIM;
-    th2a3a4 = THETA;
-    d = l5;
-    px = pos_d[0];
-    py = pos_d[1];
-    flag = 1;
-    
-    if (disLim < fabs(l5)) disLim = disLim + fabs(l5); // 必须保证disLim >fabs(l5)
-    temp = sqrt(px*px + py*py);
-    if (fabs(temp) < disLim)  // 末端在xoy上投影与坐标原点距离过近
-    {
-        flag = -1;
-        return flag;  // 返回：无法确定位姿
-    } else  // 在工作区域内，一定满足 d <= temp
-    {
-        K = d/temp;
-        if (fabs(K) > (1 - error))
-        {
-            flag = 0;
-            return flag; // 返回：不在工作区间内
-         }
-            
-         if (fabs(px) == 0) t11 = atan2(py, fabs(px)) - asin(-K);
-         else t11 = atan2(py, px) - asin(-K);
-         if (fabs(px) == 0) t12 = atan2(-py, fabs(px)) - asin(K);
-         else t12 = atan2(-py, -px) - asin(K);
-
-         /*
-          ** 利用末端轴向偏移量为零的的点来判断关节1角度 **
-         */
-         px1 = px - sin(t11) * l5 + l6 * cos(t11) * sin(th2a3a4); // 偏移为0处的坐标x1
-         py1 = py + cos(t11) * l5 + l6 * sin(t11) * sin(th2a3a4); // 偏移为0处的坐标y1
-         px2 = px - sin(t12) * l5 + l6 * cos(t12) * sin(th2a3a4); // 偏移为0处的坐标x2
-         py2 = py + cos(t12) * l5 + l6 * sin(t12) * sin(th2a3a4); // 偏移为0处的坐标y2
-    }
-    
-    /*
-     ** 选取关节1角度，以约束末端点坐标姿态 **
-    */
-    if (fabs(px1) < error && fabs(py1) < error) t1 = t11;
-    else if (fabs(px2) < error && fabs(py2) < error) t1 = t12;
-    else
-    {
-        r1 = px1 * px + py1 * py;
-        r2 = px2 * px + py2 * py;
-
-        if (r1 < 0 ) t1 = t11;
-        else if (r2 < 0) t1 = t12;
-        else
-        {
-            theta = atan2(py1, px1);
-            if (standard(theta) - standard(t11) < 1e-3) t1 = t11;
-            else t1 = t12;
-        }
-    }
-   
-    pos_ox[0] = cos(t1) * cos(th2a3a4);
-    pos_ox[1] = sin(t1) * cos(th2a3a4);
-    pos_ox[2] = sin(th2a3a4);
-    pos_oy[0] = -cos(t1) * sin(th2a3a4);
-    pos_oy[1] = -sin(t1) * sin(th2a3a4);
-    pos_oy[2] = cos(th2a3a4);
-    pos_oz[0] = sin(t1);
-    pos_oz[1] = -cos(t1);
-    pos_oz[2] = 0;
-
-    return flag;
 }
