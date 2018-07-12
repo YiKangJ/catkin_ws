@@ -36,7 +36,12 @@ class MoveItDemo:
         right_arm.go()
         
         # Get the current pose so we can add it as a waypoint
-        start_pose = right_arm.get_current_pose(end_effector_link).pose
+        start_pose = Pose()
+        start_pose.orientation.x = 0
+        start_pose.orientation.y = 0
+        start_pose.orientation.z = 0
+        start_pose.orientation.w = 1
+        #start_pose = right_arm.get_current_pose(end_effector_link).pose
         start_pose.position.x = 0.4
         start_pose.position.y = 0
         start_pose.position.z = 0.4

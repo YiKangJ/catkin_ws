@@ -118,9 +118,9 @@ TEST(mrx_t4_arm_kinematics_moveit, get_position_ik_fails_on_wrong_seed)
     std::vector<double> solution;
     moveit_msgs::MoveItErrorCodes error_code;
 
-    pose.position.x = 0.057;
-    pose.position.y = 0.0;
-    pose.position.z = 0.535;
+    pose.position.x = 0.4;
+    pose.position.y = -0.2853;
+    pose.position.z = 0.3925;
 
     EXPECT_FALSE(kinematics->getPositionIK(pose, seed, solution, error_code));
 }
@@ -137,9 +137,9 @@ TEST(mrx_t4_arm_kinematics_moveit, find_solution_for_candle_configuration)
     std::vector<double> solution;
     moveit_msgs::MoveItErrorCodes error_code;
 
-    pose.position.x = -0.345;
-    pose.position.y = 0.34;
-    pose.position.z = 0.4;
+    pose.position.x = 0.45;
+    pose.position.y = -0.234;
+    pose.position.z = 0.42;
     pose.orientation.x = 0.707104;
     pose.orientation.y = -4.19318e-6;
     pose.orientation.z = -9.11915e-7;
@@ -158,10 +158,10 @@ TEST(mrx_t4_arm_kinematics_moveit, find_solution_for_candle_configuration)
 
     EXPECT_TRUE(kinematics->getPositionIK(pose_, seed, solution, error_code));
  
-    EXPECT_NEAR( 2.3635, solution[0], 0.001);
-    EXPECT_NEAR( 1.1614, solution[1], 0.001);
-    EXPECT_NEAR( -1.5337, solution[2], 0.001);
-    EXPECT_NEAR( 0.3722, solution[3], 0.001);
+    EXPECT_NEAR( -0.6196, solution[0], 0.001);
+    EXPECT_NEAR( 1.1252, solution[1], 0.001);
+    EXPECT_NEAR( -1.5132, solution[2], 0.001);
+    EXPECT_NEAR( 0.3881, solution[3], 0.001);
 
 }
 

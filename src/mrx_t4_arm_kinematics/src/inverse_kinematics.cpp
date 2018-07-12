@@ -278,9 +278,9 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     }
     if (!(mark[0] || mark[1]))
     {
-        sstr << "No valid solution:Point is unreachable.**************************************************************************************************************************************************************************************************************************" << std::endl ;
+        sstr << "No valid solution:Point is unreachable." << std::endl ;
         logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s","No valid");
+        ROS_INFO("%s", sstr.str().c_str());
         return solution;
     }
     
@@ -315,9 +315,9 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 		sstr << "pos[0,3]: " << pos[0][3] << std::endl;
 		sstr << "pos[1,3]: " << pos[1][3] << std::endl;
         */
-		sstr << "Can't find a reasonable solution. No solution exists:Point is unreachable. *******************************************************************************************************************************************************************************************" << std::endl ;
+		sstr << "Can't find a reasonable solution. No solution exists:Point is unreachable." << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s","Cant find");
+        ROS_INFO("%s",sstr.str().c_str());
         return solution;
     } else if (temp>0)
     {

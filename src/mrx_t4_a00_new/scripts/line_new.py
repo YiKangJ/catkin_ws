@@ -31,7 +31,7 @@ def move_group_python_interface_tutorial():
   rospy.sleep(1)
   
   star = [[-0.2853, 0.3925], [0.2853, 0.3925], [-0.1763, 0.0573], [0, 0.6], [0.1763, 0.0573], [-0.2853, 0.3925]]
-  
+  '''
   L = [0.257, 0.255, 0.250, 0.150, 0, 0]
   for j in range(5):
     st_pos = deepcopy(star[j])
@@ -47,7 +47,25 @@ def move_group_python_interface_tutorial():
           arm.set_start_state_to_current_state()
           arm.set_pose_target(poses[i])
           arm.go()
-
+  '''
+  pose = geometry_msgs.msg.Pose()
+  pose.orientation.x = 0.707106781186547
+  pose.orientation.y = 0
+  pose.orientation.z = 0
+  pose.orientation.w = 0.707106781186547
+  
+  pose.position.x = 0.4
+  pose.position.y = star[0][0]
+  pose.position.z = star[0][1]
+  arm.set_pose_target(pose)
+  arm.go()
+  '''
+    print pose
+    print '*'*30
+    arm.set_pose_target(pose)
+    arm.go()
+    rospy.sleep(1)
+  '''
   arm.set_named_target("up")
   arm.go()
   rospy.sleep(1)

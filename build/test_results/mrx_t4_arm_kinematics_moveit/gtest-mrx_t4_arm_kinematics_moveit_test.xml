@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites tests="2" failures="0" disabled="0" errors="0" timestamp="2018-07-11T21:10:18" time="0.519" name="AllTests">
-  <testsuite name="mrx_t4_arm_kinematics_moveit" tests="2" failures="0" disabled="0" errors="0" time="0.519">
-    <testcase name="get_position_ik_fails_on_wrong_seed" status="run" time="0.286" classname="mrx_t4_arm_kinematics_moveit" />
-    <testcase name="find_solution_for_candle_configuration" status="run" time="0.233" classname="mrx_t4_arm_kinematics_moveit" />
+<testsuites tests="2" failures="1" disabled="0" errors="0" timestamp="2018-07-12T10:35:41" time="0.622" name="AllTests">
+  <testsuite name="mrx_t4_arm_kinematics_moveit" tests="2" failures="1" disabled="0" errors="0" time="0.621">
+    <testcase name="get_position_ik_fails_on_wrong_seed" status="run" time="0.317" classname="mrx_t4_arm_kinematics_moveit" />
+    <testcase name="find_solution_for_candle_configuration" status="run" time="0.304" classname="mrx_t4_arm_kinematics_moveit">
+      <failure message="/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:161&#x0A;The difference between -0.6196 and solution[0] is 0.14008070800740385, which exceeds 0.001, where&#x0A;-0.6196 evaluates to -0.61960000000000004,&#x0A;solution[0] evaluates to -0.47951929199259619, and&#x0A;0.001 evaluates to 0.001." type=""><![CDATA[/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:161
+The difference between -0.6196 and solution[0] is 0.14008070800740385, which exceeds 0.001, where
+-0.6196 evaluates to -0.61960000000000004,
+solution[0] evaluates to -0.47951929199259619, and
+0.001 evaluates to 0.001.]]></failure>
+      <failure message="/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:162&#x0A;The difference between 1.1252 and solution[1] is 0.024953266762813842, which exceeds 0.001, where&#x0A;1.1252 evaluates to 1.1252,&#x0A;solution[1] evaluates to 1.1002467332371861, and&#x0A;0.001 evaluates to 0.001." type=""><![CDATA[/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:162
+The difference between 1.1252 and solution[1] is 0.024953266762813842, which exceeds 0.001, where
+1.1252 evaluates to 1.1252,
+solution[1] evaluates to 1.1002467332371861, and
+0.001 evaluates to 0.001.]]></failure>
+      <failure message="/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:163&#x0A;The difference between -1.5132 and solution[2] is 0.1528859193477905, which exceeds 0.001, where&#x0A;-1.5132 evaluates to -1.5132000000000001,&#x0A;solution[2] evaluates to -1.3603140806522096, and&#x0A;0.001 evaluates to 0.001." type=""><![CDATA[/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:163
+The difference between -1.5132 and solution[2] is 0.1528859193477905, which exceeds 0.001, where
+-1.5132 evaluates to -1.5132000000000001,
+solution[2] evaluates to -1.3603140806522096, and
+0.001 evaluates to 0.001.]]></failure>
+      <failure message="/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:164&#x0A;The difference between 0.3881 and solution[3] is 0.12803265258497654, which exceeds 0.001, where&#x0A;0.3881 evaluates to 0.3881,&#x0A;solution[3] evaluates to 0.26006734741502346, and&#x0A;0.001 evaluates to 0.001." type=""><![CDATA[/home/jyk/catkin_ws/src/mrx_t4_arm_kinematics_moveit/test/mrx_t4_arm_kinematics_moveit_test.cpp:164
+The difference between 0.3881 and solution[3] is 0.12803265258497654, which exceeds 0.001, where
+0.3881 evaluates to 0.3881,
+solution[3] evaluates to 0.26006734741502346, and
+0.001 evaluates to 0.001.]]></failure>
+    </testcase>
   </testsuite>
 </testsuites>

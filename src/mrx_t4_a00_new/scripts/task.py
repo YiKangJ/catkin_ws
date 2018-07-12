@@ -53,21 +53,31 @@ class MoveItDemo:
 
     #    right_arm.go()
     #    rospy.sleep(1)
+        star = [[-0.2853, 0.3925], [0.2853, 0.3925], [-0.1763, 0.0573], [0, 0.6], [0.1763, 0.0573], [-0.2853, 0.3925]]
+       
         waypoints = []
         wpose = deepcopy(start_pose)
         waypoints.append(deepcopy(wpose))
 
         end_pose = deepcopy(start_pose)
         
-        wpose.position.x += 0.05
-        wpose.position.z += 0.1
-        waypoints.append(deepcopy(wpose))
+        for i in range(1):
+            wpose.position.x = 0.4
+            wpose.position.y = star[i][0]
+            wpose.position.z = star[i][1]
+
+            waypoints.append(deepcopy(wpose))
         
+        '''
+        wpose.position.z -= 0.15
+        waypoints.append(deepcopy(wpose))
 
-        #wpose.position.z -= 0.15
-        #waypoints.append(deepcopy(wpose))
-
-        waypoints.append(end_pose)
+        wpose.position.x = 0.4
+        wpose.position.y = -0.2853
+        wpose.position.z = 0.3925
+        waypoints.append(deepcopy(wpose))
+        '''
+        #waypoints.append(end_pose)
         
         fraction = 0.0
         maxtries = 100

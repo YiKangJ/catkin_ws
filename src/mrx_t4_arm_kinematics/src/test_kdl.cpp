@@ -56,12 +56,12 @@ int main()
     KDL::Frame goal;
     KDL::Rotation rot;
 
-    goal.p.x(0.312);
-    goal.p.y(0.247);
-    goal.p.z(0.362);
-    const KDL::Vector  UX(0.784045824462, 0.62070294437, 0);
+    goal.p.x(0.45);
+    goal.p.y(-0.234);
+    goal.p.z(0.42);
+    const KDL::Vector  UX(0.8872, -0.4614, 0);
     const KDL::Vector  UY(0,0,1);
-    const KDL::Vector  UZ(0.620702944366, -0.784045824462, 0); 
+    const KDL::Vector  UZ(-0.4614, -0.8872, 0); 
     goal.M = KDL::Rotation(UX,UY,UZ);
 	goal.M.GetQuaternion(x, y, z, w);
 /*
