@@ -59,9 +59,9 @@ int main()
     goal.p.x(0.45);
     goal.p.y(-0.234);
     goal.p.z(0.42);
-    const KDL::Vector  UX(0.8872, -0.4614, 0);
+    const KDL::Vector  UX(0.88721680123, -0.461352737, 0);
     const KDL::Vector  UY(0,0,1);
-    const KDL::Vector  UZ(-0.4614, -0.8872, 0); 
+    const KDL::Vector  UZ(-0.4613527367, -0.88721680123, 0); 
     goal.M = KDL::Rotation(UX,UY,UZ);
 	goal.M.GetQuaternion(x, y, z, w);
 /*

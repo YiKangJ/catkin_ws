@@ -24,7 +24,7 @@ def move_group_python_interface_tutorial():
   end_effector_link = arm.get_end_effector_link()
   print "============ End effector: %s" % end_effector_link
     
-  arm.set_goal_tolerance(0.0001);
+  arm.set_goal_position_tolerance(0.00001);
   #arm.set_planner_id("BKPIECEkConfigDefault") 2
   #arm.set_planner_id("BFMTkConfigDefault") 2
   #arm.set_planner_id("BiESTkConfigDefault")
@@ -42,11 +42,19 @@ def move_group_python_interface_tutorial():
   pose_target.position.y = -0.234
   pose_target.position.z = 0.42
 
-  pose_target.orientation.x = 0.707106781186547
-  pose_target.orientation.y = 0
-  pose_target.orientation.z = 0
-  pose_target.orientation.w = 0.707106781186547
-  '''
+  pose_target.orientation.x = 0.686880047975991
+  pose_target.orientation.y = -0.167916049556052
+  pose_target.orientation.z = -0.167916049665242
+  pose_target.orientation.w = 0.686880047975991
+  
+  arm.set_start_state_to_current_state()
+  #arm.set_pose_target(pose_target)
+  arm.set_position_target([0.45, -0.234, 0.42])
+
+  arm.go()
+  rospy.sleep(3)
+
+  
   pose_target.position.x = 0.4
   pose_target.position.y = -0.3
   pose_target.position.z = 0.4
@@ -55,9 +63,8 @@ def move_group_python_interface_tutorial():
   pose_target.orientation.y = -0.223606797749979
   pose_target.orientation.z = -0.223606797749979
   pose_target.orientation.w = 0.670820393249937
-  '''
   arm.set_start_state_to_current_state()
-  arm.set_position_target([0.45, -0.234, 0.42])
+  arm.set_pose_target(pose_target)
 
   arm.go()
   rospy.sleep(3)
@@ -80,7 +87,7 @@ def move_group_python_interface_tutorial():
   #rospy.sleep(1)
   print arm.get_current_pose()
   print '-'*30
-  '''
+  
   pose_target.position.x = 0.312
   pose_target.position.y = 0.247
   pose_target.position.z = 0.364
@@ -92,7 +99,7 @@ def move_group_python_interface_tutorial():
   arm.set_pose_target(pose_target)
 
   arm.go()
-  '''
+  
   pose_target.position.x = 0.4
   pose_target.position.y = -0.1
   pose_target.position.z = 0.4

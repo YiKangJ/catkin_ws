@@ -12,12 +12,11 @@
 
 #define PI 3.141592653589793
 #define INVALID 500
-#define THETA 0 // 末端关节角度
+#define THETA 0 // 末端关节角度（度） 90：竖直向上，-90：竖直向下，0：水平
 #define DISLIM 0.01 // disLim
 
 using namespace mrx_t4_arm_kinematics;
 
-#define DEG_TO_RAD(x) ((x) * M_PI / 180.0)
 
 const double error = 1e-7;
 const double l1 = 0.257 ;
@@ -114,7 +113,13 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
             solution[i](j) = INVALID;
         }
     
-    if (calFixPosMatr(pos_d, pos_ox, pos_oy, pos_oz) != 1) return solution;
+    if (calFixPosMatr(pos_d, pos_ox, pos_oy, pos_oz) != 1) 
+    {   
+        sstr << "生成位姿矩阵失败！" << std::endl;
+    	logger_.write(sstr.str(), __FILE__, __LINE__);
+        //ROS_INFO("%s", sstr.str().c_str());
+        return solution;
+    }
 
 	double posIn14 = pos_d[0] ;
 	double posIn24 = pos_d[1] ;
@@ -153,7 +158,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     {
         sstr << "Input pose matrix is invalid." << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s", sstr.str().c_str());
+        //ROS_INFO("%s", sstr.str().c_str());
         return solution;
     }
 
@@ -197,7 +202,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     {
 		sstr << "Argument for j3 is out of range. No solution exists:Point is unreachable" << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s", sstr.str().c_str());
+        //ROS_INFO("%s", sstr.str().c_str());
         return solution;
     }
    
@@ -280,7 +285,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     {
         sstr << "No valid solution:Point is unreachable." << std::endl ;
         logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s", sstr.str().c_str());
+        //ROS_INFO("%s", sstr.str().c_str());
         return solution;
     }
     
@@ -317,7 +322,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
         */
 		sstr << "Can't find a reasonable solution. No solution exists:Point is unreachable." << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
-        ROS_INFO("%s",sstr.str().c_str());
+        //ROS_INFO("%s",sstr.str().c_str());
         return solution;
     } else if (temp>0)
     {
@@ -366,7 +371,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 
 	logger_.write(sstr.str(), __FILE__, __LINE__);
 
-    //ROS_INFO("%s","succes");
+    //ROS_INFO("%s",sstr.str().c_str());
 	return solution ;
 
 }
@@ -459,7 +464,7 @@ int mrx_t4_arm_kinematics::calFixPosMatr(KDL::Vector pos_d, KDL::Vector &pos_ox,
     int flag;
     
     disLim = DISLIM;
-    th2a3a4 = THETA;
+    th2a3a4 = (double)THETA*PI/180;
     d = l5;
     px = pos_d[0];
     py = pos_d[1];

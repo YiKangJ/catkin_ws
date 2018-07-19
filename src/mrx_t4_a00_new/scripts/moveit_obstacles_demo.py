@@ -67,7 +67,7 @@ class MoveItDemo:
         rospy.sleep(2)
         
         # Set the height of the table off the ground
-        table_ground = 0.75
+        table_ground = 0.4
         
         # Set the length, width and height of the table and boxes
         table_size = [0.2, 0.7, 0.01]
@@ -114,7 +114,7 @@ class MoveItDemo:
         target_pose.header.frame_id = reference_frame
         target_pose.pose.position.x = 0.40
         target_pose.pose.position.y = 0.0
-        target_pose.pose.position.z = table_pose.pose.position.z + table_size[2] + 0.08
+        target_pose.pose.position.z = table_pose.pose.position.z + table_size[2] + 0.1
         target_pose.pose.orientation.w = 1.0
         
         # Set the target pose for the arm
