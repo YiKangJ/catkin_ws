@@ -55,7 +55,7 @@ def move_group_python_interface_tutorial():
     y = random.uniform(0, 0.38)
     if random.randint(1, 2) == 2:
         y = -y
-    z = random.uniform(0.35, 0.5)
+    z = random.uniform(0.2, 0.35)
     arm.set_position_target([x, y, z])
     print [x, y, z]
     arm.go()

@@ -61,7 +61,7 @@ class MoveItDemo:
 
         end_pose = deepcopy(start_pose)
         
-        for i in range(1):
+        for i in range(6):
             wpose.position.x = 0.4
             wpose.position.y = star[i][0]
             wpose.position.z = star[i][1]

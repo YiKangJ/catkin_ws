@@ -12,7 +12,7 @@
 
 #define PI 3.141592653589793
 #define INVALID 500
-#define THETA 0 // 末端关节角度（度） 90：竖直向上，-90：竖直向下，0：水平
+#define THETA -90 // 末端关节角度（度） 90：竖直向上，-90：竖直向下，0：水平
 #define DISLIM 0.01 // disLim
 
 using namespace mrx_t4_arm_kinematics;
@@ -33,7 +33,14 @@ InverseKinematics::InverseKinematics(
         Logger &logger) : logger_(logger)
 {
     min_angles_ = min_angles;
+    min_angles_[1] += PI/2;
+    min_angles_[2] -= PI/2;
+    min_angles_[3] -= PI/2;
     max_angles_ = max_angles;
+    max_angles_[1] += PI/2;
+    max_angles_[2] -= PI/2;
+    max_angles_[3] -= PI/2;
+
 }
 
 InverseKinematics::~InverseKinematics()
@@ -359,6 +366,14 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
         }
     }
 
+    solution[0](1) -= PI/2;
+    solution[0](2) += PI/2;
+    solution[0](3) += PI/2;
+
+    solution[1](1) -= PI/2;
+    solution[1](2) += PI/2;
+    solution[1](3) += PI/2;
+    
     sstr << "j1: " << solution[0](0) << std::endl ;
 	sstr << "j2: " << solution[0](1) << std::endl ;
 	sstr << "j3: " << solution[0](2) << std::endl ;

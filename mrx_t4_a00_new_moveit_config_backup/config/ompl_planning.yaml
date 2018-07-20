@@ -121,7 +121,7 @@ planner_configs:
     dense_delta_fraction: 0.001  # delta fraction for interface detection. default: 0.001
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
 arm:
-  default_planner_config: NonekConfigDefault
+  default_planner_config: kConfigDefaultkConfigDefault
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
@@ -146,3 +146,5 @@ arm:
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
+  projection_evaluator: joints(base_to_armA,armA_to_armB)
+  longest_valid_segment_fraction: 0.005

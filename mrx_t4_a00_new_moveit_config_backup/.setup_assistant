@@ -2,10 +2,10 @@ moveit_setup_assistant_config:
   URDF:
     package: mrx_t4_a00_new
     relative_path: urdf/mrx_t4_a00_new.urdf
-    xacro_args: "--inorder "
+    xacro_args: ""
   SRDF:
     relative_path: config/mrx_t4_a00_new.srdf
   CONFIG:
     author_name: YikangJ
     author_email: jinyikangjyk@163.com
-    generated_timestamp: 1532006336
+    generated_timestamp: 1528773476
