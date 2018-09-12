@@ -1,0 +1,23 @@
+arm:
+    # 关节状态控制器，用来发布关节状态, 充当joint_state_publisher的角色
+    joint_state_controller:
+        type: joint_state_controller/JointStateController
+        publish_rate: 50
+
+    # 位置控制器
+    joint1_position_controller:
+        type: position_controllers/JointPositionController
+        joint: base_to_armA
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    joint2_position_controller:
+        type: position_controllers/JointPositionController
+        joint: armA_to_armB
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    joint3_position_controller:
+        type: position_controllers/JointPositionController
+        joint: armB_to_armC
+        pid: {p: 100.0, i: 0.01, d: 10.0}
+    joint4_position_controller:
+        type: position_controllers/JointPositionController
+        joint: armC_to_armD
+        pid: {p: 100.0, i: 0.01, d: 10.0}

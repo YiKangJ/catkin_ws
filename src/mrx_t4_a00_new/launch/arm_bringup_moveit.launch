@@ -1,0 +1,14 @@
+<launch>
+    <!-- 加载Gazebo -->
+    <include file="$(find mrx_t4_a00_new)/launch/arm_world.launch" />
+
+    <!-- 加载ros_control关节状态控制器及机器人状态发布 -->
+    <include file="$(find mrx_t4_a00_new)/launch/arm_gazebo_states.launch" />
+
+    <!-- 加载ros_control关节轨迹控制器 -->
+    <include file="$(find mrx_t4_a00_new)/launch/arm_trajectory_controller.launch" />
+
+    <!-- 加载moveit配置 -->
+    <include file="$(find mrx_t4_a00_new_moveit_config)/launch/moveit_planning_execution.launch" />
+
+</launch>

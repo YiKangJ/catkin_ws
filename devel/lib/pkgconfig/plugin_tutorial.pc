@@ -1,0 +1,8 @@
+prefix=/home/jyk/catkin_ws/devel
+
+Name: plugin_tutorial
+Description: Description of plugin_tutorial
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/jyk/catkin_ws/devel/lib 
+Requires: 

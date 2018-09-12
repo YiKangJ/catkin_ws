@@ -4,11 +4,10 @@
 #include <vector>
 
 /**
- * A comparator for joint configurations (represented as vectors of double). The
- * configurations are compared w.r.t. a reference configuration.
+ * 关节序列比较器
+ * 将求解值与参考值进行比较
  *
- * A use case of this class is sorting a collection of joint configurations so
- * that the configuration closest to the current configuration can be found.
+ * 将所有求解的关节序列集合按照与参考序列的临近关系从小到达排序，最终最近的元素就是离参考序列最近的解。
  */
 
 template <typename T>
@@ -16,34 +15,30 @@ class ConfigurationComparator
 {
         public:
                 /**
-                 * Ctor.
                  *
-                 * @param reference The reference configuration.
+                 * @param reference 参考关节序列
                  */
 
                 ConfigurationComparator(const std::vector<T> &reference);
 
-                /**
-                 * Dtor.
-                 */
                 virtual ~ConfigurationComparator();
 
                 /**
-                 * Compare the two input configurations based on their distance to the
-                 * reference configuration.
+                 * 根据参考序列来比较两输入序列与参考序列的距离大小。所谓距
+                 * 离，指的是相对应两个序列元素的平方差和。
                  *
-                 * @param a The first configuration.
+                 * @param a 第一个关节序列
                  *
-                 * @param b The second configuration.
+                 * @param b 第二个关节序列
                  *
-                 * @return The function returns true when the first configuration is
-                 * closer to the reference configuration, else it return false.
+                 * @return 当第一个关节序列距离参考序列更近时返回true，否则
+                 * 返回false。
                  */
                 bool operator()(const std::vector<T> &a, const std::vector<T> &b);
         
         private:
                 /**
-                 * The reference configuration as provided to the ctor.
+                 * 提供给构造函数的参考序列
                  */
                 std::vector<T> reference_;
 };

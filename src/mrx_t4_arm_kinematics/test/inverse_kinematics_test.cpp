@@ -1,3 +1,12 @@
+/**
+  * @file inverse_kinematics_test.cpp
+  *
+  * @brief ROS提供的gtest框架测试求解器文件
+  *
+  * @author YikangJ
+  *
+  * @date 07/20 2018
+  */
 #include <moveit/kinematics_base/kinematics_base.h>
 #include <gtest/gtest.h>
 #include <mrx_t4_arm_kinematics/inverse_kinematics.h>

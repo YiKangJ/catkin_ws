@@ -48,7 +48,7 @@
         <mesh filename="package://mrx_t4_a00_new/meshes/base.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        <color rgba="0.80 0.80 0.80 1" />
       </material>
     </visual>
     <collision>
@@ -85,7 +85,7 @@
         <mesh filename="package://mrx_t4_a00_new/meshes/armA.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+        <color rgba="0.80 0.80 0.80 1" />
       </material>
     </visual>
     <collision>
@@ -123,7 +123,7 @@
         <mesh filename="package://mrx_t4_a00_new/meshes/armB.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.69804 0.69804 0.69804 1" />
+        <color rgba="0.80 0.80 0.80 1" />
       </material>
     </visual>
     <collision>
@@ -163,7 +163,7 @@
         <mesh filename="package://mrx_t4_a00_new/meshes/armC.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.69804 0.69804 0.69804 1" />
+        <color rgba="0.80 0.80 0.80 1" />
       </material>
     </visual>
     <collision>
@@ -201,7 +201,7 @@
         <mesh filename="package://mrx_t4_a00_new/meshes/armD.STL" />
       </geometry>
       <material name="">
-        <color rgba="0.62745 0.41961 0.18824 1" />
+        <color rgba="0.80 0.80 0.80 1" />
       </material>
     </visual>
     <collision>

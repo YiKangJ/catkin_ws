@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jyk/catkin_ws/build
 include mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_configuration_comparator_test.dir/progress.make
 
 mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_configuration_comparator_test:
-	cd /home/jyk/catkin_ws/build/mrx_t4_arm_kinematics_moveit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-configuration_comparator_test.xml /home/jyk/catkin_ws/devel/lib/mrx_t4_arm_kinematics_moveit/configuration_comparator_test\ --gtest_output=xml:/home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-configuration_comparator_test.xml
+	cd /home/jyk/catkin_ws/build/mrx_t4_arm_kinematics_moveit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-configuration_comparator_test.xml "/home/jyk/catkin_ws/devel/lib/mrx_t4_arm_kinematics_moveit/configuration_comparator_test --gtest_output=xml:/home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-configuration_comparator_test.xml"
 
 _run_tests_mrx_t4_arm_kinematics_moveit_gtest_configuration_comparator_test: mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_configuration_comparator_test
 _run_tests_mrx_t4_arm_kinematics_moveit_gtest_configuration_comparator_test: mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_configuration_comparator_test.dir/build.make

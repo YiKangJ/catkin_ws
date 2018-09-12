@@ -1,8 +1,8 @@
 /*
- * logger.h
+ * @file logger.h
  *
- *  Created on: 25-May-2018
- *      Author: YiKangJ
+ * @author YikangJ
+ * @date 07/20 2018
  */
 
 #ifndef INCLUDE_LOGGER_H_
@@ -13,6 +13,7 @@
 namespace mrx_t4_arm_kinematics
 {
 
+/// @brief 日志类
 class Logger
 {
     public:
@@ -22,15 +23,14 @@ class Logger
         virtual ~Logger();
 
         /**
-         * Write a log message. The default implementation is a dummy which does
-         * nothing. This function should be overridden in a derived class to
-         * achieve different behavior.
+         * 输出日志信息。默认是一个虚函数。要实现该函数功能应该在子
+         * 类中重写。
          *
-         * @param msg The message to write to the log.
+         * @param msg 要写入日志文件的内容
          *
-         * @param file The source file from where the message was logged.
+         * @param file 要写入日志的源文件
          *
-         * @param line The line in the file from where the message was logged.
+         * @param line 指定从该行开始写入日志
          */
 
         virtual void write(const std::string &msg, const char *file, int line);
@@ -38,7 +38,7 @@ class Logger
 
     public:
         /**
-         * A null object which can be used as a default argument.
+         * 一个可以用作默认参数的空对象
          */
         static Logger null;
 };

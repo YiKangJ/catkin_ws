@@ -1,8 +1,9 @@
-/*
- * logger.cpp
+/**
+ *@file logger.cpp
  *
- *  Created on: 25-May-2018
- *      Author: YiKangJ
+ *@author YikangJ
+ *
+ *@date 07/20 2018
  */
 
 #include <mrx_t4_arm_kinematics/logger.h>

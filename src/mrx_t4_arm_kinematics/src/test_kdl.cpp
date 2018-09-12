@@ -1,8 +1,12 @@
-/*
- * test_kdl.cpp
+/**
+ * @file test_kdl.cpp
+ * @brief 求解器核心测试
+ * 
+ * 仅仅从inverse_kinematics.cpp抽取核心做测试用，不影响求解器即插件的使用
+ *  
+ * @author YikangJ
  *
- *  Created on: 03-June-2018
- *      Author: YikangJ
+ * @date 07/20 2018
  */
 
 

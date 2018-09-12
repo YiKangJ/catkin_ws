@@ -1,0 +1,8 @@
+prefix=/home/jyk/catkin_ws/install
+
+Name: pluginlib_tutorials
+Description: Description of pluginlib_tutorials
+Version: 0.1.10
+Cflags: -I/home/jyk/catkin_ws/install/include -I/usr/include
+Libs: -L/home/jyk/catkin_ws/install/lib -lpluginlib_tutorials
+Requires: pluginlib roscpp

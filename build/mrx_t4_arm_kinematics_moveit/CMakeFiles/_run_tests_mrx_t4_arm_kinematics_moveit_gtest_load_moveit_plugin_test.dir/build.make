@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/jyk/catkin_ws/build
 include mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_load_moveit_plugin_test.dir/progress.make
 
 mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_load_moveit_plugin_test:
-	cd /home/jyk/catkin_ws/build/mrx_t4_arm_kinematics_moveit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-load_moveit_plugin_test.xml /home/jyk/catkin_ws/devel/lib/mrx_t4_arm_kinematics_moveit/load_moveit_plugin_test\ --gtest_output=xml:/home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-load_moveit_plugin_test.xml
+	cd /home/jyk/catkin_ws/build/mrx_t4_arm_kinematics_moveit && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/catkin/cmake/test/run_tests.py /home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-load_moveit_plugin_test.xml "/home/jyk/catkin_ws/devel/lib/mrx_t4_arm_kinematics_moveit/load_moveit_plugin_test --gtest_output=xml:/home/jyk/catkin_ws/build/test_results/mrx_t4_arm_kinematics_moveit/gtest-load_moveit_plugin_test.xml"
 
 _run_tests_mrx_t4_arm_kinematics_moveit_gtest_load_moveit_plugin_test: mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_load_moveit_plugin_test
 _run_tests_mrx_t4_arm_kinematics_moveit_gtest_load_moveit_plugin_test: mrx_t4_arm_kinematics_moveit/CMakeFiles/_run_tests_mrx_t4_arm_kinematics_moveit_gtest_load_moveit_plugin_test.dir/build.make

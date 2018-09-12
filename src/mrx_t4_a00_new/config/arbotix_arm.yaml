@@ -1,0 +1,10 @@
+joints: {
+    base_to_armA: {id: 1, ticks: 4096, neutral: 2048, max_angle: 180, min_angle: -180, max_speed: 90},
+    armA_to_armB: {id: 2, max_angle: 28, min_angle: -87, max_speed: 90},
+    armB_to_armC: {id: 3, ticks: 4096, neutral: 2048, max_angle: 178, min_angle: -58, max_speed: 90},
+    armC_to_armD: {id: 4, ticks: 4096, neutral: 2048, max_angle: 180, min_angle: -180, max_speed: 90},
+}
+
+controllers: {
+    arm_controller: {type: follow_controller, joints: [base_to_armA, armA_to_armB, armB_to_armC, armC_to_armD], action_name: arm_controller/follow_joint_trajectory, onboard: False }
+}

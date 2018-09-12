@@ -1,0 +1,19 @@
+<!-- 启动arbotix控制器，move_group进行仿真 -->
+<launch>
+    <param name="/use_sim_time" value="false" />
+
+    <arg name="sim" default="true" />
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find mrx_t4_a00_new)/urdf/mrx_t4_a00_new_gazebo.xacro' " />
+
+    <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen" >
+        <rosparam file="$(find mrx_t4_a00_new)/config/arbotix_arm.yaml" command="load" />
+        <param name="sim" value="true" />
+    </node>
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+    <include file="$(find mrx_t4_a00_new_moveit_config)/launch/move_group.launch" />
+
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mrx_t4_a00_new)/config/pick_and_place.rviz" required="true" /> 
+
+</launch>

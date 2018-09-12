@@ -1,8 +1,10 @@
-/*
- * inverse_kinematics.cpp
+/**
+ *@file inverse_kinematics.cpp
+ *@brief MRX_T4机械臂求解器核心
  *
- *  Created on: 11-July-2018
- *      Author: YiKangJ
+ *@author YikangJ
+ *@version 1.0
+ *@date 07/20 2018
  */
 
 #include <mrx_t4_arm_kinematics/inverse_kinematics.h>
@@ -11,13 +13,14 @@
 #include <sstream>
 
 #define PI 3.141592653589793
-#define INVALID 500
-#define THETA -90 // 末端关节角度（度） 90：竖直向上，-90：竖直向下，0：水平
-#define DISLIM 0.01 // disLim
+#define INVALID 500 // 定义初始无效关节状态
+#define THETA 0 // 末端关节角度（度） 90：竖直向上，-90：竖直向下，0：水平
+#define DISLIM 0.01 // 末端点在xoy投影与原点最小距离限制
 
 using namespace mrx_t4_arm_kinematics;
 
-
+// error 全局计算误差范围
+// l 机械臂4杆长度以及距离尺寸
 const double error = 1e-7;
 const double l1 = 0.257 ;
 const double l2 = 0.255 ;
@@ -25,7 +28,6 @@ const double l3 = 0.250 ;
 const double l4 = 0.150 ;
 const double l5 = 0 ;
 const double l6 = 0 ;
-
 
 InverseKinematics::InverseKinematics(
         const std::vector<double> &min_angles,
@@ -53,15 +55,7 @@ int InverseKinematics::CartToJnt(const KDL::JntArray &q_init,
 {	
 
     std::vector<KDL::JntArray> solution(2);
-    /*    
-	for (unsigned int i=0;i<solution.size();i++)
-        for (unsigned int j=0;j<solution[i].rows();j++) 
-        {
-            solution[i](j) = INVALID;
-        }
-    */
 
-    // there are no solutions available yet
     q_out.clear();
 
     // iterate over all redundant solutions
@@ -245,11 +239,6 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
 		if (fabs(posIn32) == 0) posOrg41 = standard(atan2(posIn31,fabs(posIn32)) - posOrg21 - posOrg31); 
 		else posOrg41 = standard(atan2(posIn31,posIn32) - posOrg21 - posOrg31); 
        
-       // solution[0](0) = posOrg11;
-       // solution[0](1) = posOrg21;
-       // solution[0](2) = posOrg31;
-       // solution[0](3) = posOrg41;
-      
      }
     
     s3 = sin(posOrg32);
@@ -282,11 +271,6 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
         if (fabs(posIn32) == 0) posOrg42 = standard(atan2(posIn31, fabs(posIn32)) - posOrg22 - posOrg32); 
 		else posOrg42 = standard(atan2(posIn31,posIn32) - posOrg22 - posOrg32); 
         
-        //solution[1](0) = posOrg12;
-        //solution[1](1) = posOrg22;
-        //solution[1](2) = posOrg32;
-        //solution[1](3) = posOrg42;
-       
     }
     if (!(mark[0] || mark[1]))
     {
@@ -313,20 +297,7 @@ std::vector<KDL::JntArray> InverseKinematics::ik(const KDL::Frame& g0)
     }
     
     if (temp == 0)
-    {	/*
-		sstr << "posIn:" << std::endl;
-		sstr << posIn11 << "," << posIn12 << "," << posIn13 << std::endl;
-		sstr << posIn21 << "," << posIn22 << "," << posIn23 << std::endl;
-		sstr << posIn31 << "," << posIn32 << "," << posIn33 << std::endl;
-		sstr << "pos[0,0]: " << pos[0][0] << std::endl;
-		sstr << "pos[1,0]: " << pos[1][0] << std::endl;
-		sstr << "pos[0,1]: " << pos[0][1] << std::endl;
-		sstr << "pos[1,1]: " << pos[1][1] << std::endl;
-		sstr << "pos[0,2]: " << pos[0][2] << std::endl;
-		sstr << "pos[1,2]: " << pos[1][2] << std::endl;
-		sstr << "pos[0,3]: " << pos[0][3] << std::endl;
-		sstr << "pos[1,3]: " << pos[1][3] << std::endl;
-        */
+    {	
 		sstr << "Can't find a reasonable solution. No solution exists:Point is unreachable." << std::endl ;
     	logger_.write(sstr.str(), __FILE__, __LINE__);
         //ROS_INFO("%s",sstr.str().c_str());
@@ -452,13 +423,6 @@ bool InverseKinematics::isSolutionValid(const KDL::JntArray &solution) const
         if (solution(i)!= INVALID) valid = true;
     }
 
-    /*
-    for (unsigned int i = 0; i < solution.rows(); i++) 
-    {
-        if (!(checkLim(solution(i),min_angles_[i], max_angles_[i]))) valid = false;
-    }
-    */
-    
     return valid;
 }
 
