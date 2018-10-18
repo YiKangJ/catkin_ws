@@ -67,7 +67,7 @@ class MoveItDemo:
                 point = JointTrajectoryPoint()
                 point.positions = map(float, cont[0:4])
                 point.velocities = map(float, cont[4:8])
-                point.time_from_start = rospy.Duration(float(cont[8])*6)
+                point.time_from_start = rospy.Duration(float(cont[8]))
                 joint_trajectory.points.append(deepcopy(point))
 
         

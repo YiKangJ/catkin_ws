@@ -6,9 +6,14 @@
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
+  
+  <arg name="world_name" value="$(find mrx_t4_a00_new)/worlds/playground.world" />
 
   <!-- We resume the logic in empty_world.launch -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- empty world 时注释掉 -->
+    <arg name="world_name" value="$(arg world_name)" />
+    
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
     <arg name="paused" value="$(arg paused)"/>
@@ -17,9 +22,12 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find mrx_t4_a00_new)/urdf/mrx_t4_a00_new_gazebo.xacro'" /> 
-
-
+  <!-- no kinect -->
+  <!-- <param name="robot_description" command="$(find xacro)/xacro (-*2)inorder '$(find mrx_t4_a00_new)/urdf/mrx_t4_a00_new_gazebo.xacro'" /> --> 
+  
+  <!-- with kinect -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find mrx_t4_a00_new)/urdf/mrx_t4_a00_new_with_kinect_gazebo.xacro'" /> 
+  
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
 	args="-urdf -model arm -param robot_description"/> 
