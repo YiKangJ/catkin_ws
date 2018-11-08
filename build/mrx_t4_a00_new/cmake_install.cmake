@@ -47,19 +47,3 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mrx_t4_a00_new" TYPE FILE FILES "/home/jyk/catkin_ws/src/mrx_t4_a00_new/package.xml")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mrx_t4_a00_new/config" TYPE DIRECTORY FILES "/home/jyk/catkin_ws/src/mrx_t4_a00_new/config/")
-endif()
-
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mrx_t4_a00_new/launch" TYPE DIRECTORY FILES "/home/jyk/catkin_ws/src/mrx_t4_a00_new/launch/")
-endif()
-
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mrx_t4_a00_new/meshes" TYPE DIRECTORY FILES "/home/jyk/catkin_ws/src/mrx_t4_a00_new/meshes/")
-endif()
-
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/mrx_t4_a00_new/urdf" TYPE DIRECTORY FILES "/home/jyk/catkin_ws/src/mrx_t4_a00_new/urdf/")
-endif()
-

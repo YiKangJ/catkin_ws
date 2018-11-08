@@ -4,7 +4,7 @@
 
     <!-- 加载ros_control关节状态控制器及机器人状态发布 -->
     <include file="$(find mrx_t4_a00_new)/launch/arm_gazebo_states.launch" />
-
+    
     <!-- 加载ros_control关节轨迹控制器 -->
     <include file="$(find mrx_t4_a00_new)/launch/arm_trajectory_controller.launch" />
 

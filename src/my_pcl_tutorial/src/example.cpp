@@ -14,6 +14,7 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr& cloud_msg)
     pcl::PCLPointCloud2* cloud = new pcl::PCLPointCloud2;
     pcl::PCLPointCloud2ConstPtr cloudPtr(cloud);
 
+    pcl::PCLPointCloud2 cloud_filtered;
     // Convert to PCL data type
     pcl_conversions::toPCL(*cloud_msg, *cloud);
 

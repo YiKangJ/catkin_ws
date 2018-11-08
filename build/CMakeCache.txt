@@ -628,7 +628,7 @@ SDFormat_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/sdformat
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
 //Path to a program.
-SPHINX_BUILD:FILEPATH=SPHINX_BUILD-NOTFOUND
+SPHINX_BUILD:FILEPATH=/home/jyk/.local/bin/sphinx-build
 
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE

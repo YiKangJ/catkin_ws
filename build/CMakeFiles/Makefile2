@@ -457,6 +457,42 @@ kuca_simple_moveit_config/preinstall:
 .PHONY : kuca_simple_moveit_config/preinstall
 
 #=============================================================================
+# Directory level rules for directory mrx_t4_a00_new
+
+# Convenience name for "all" pass in the directory.
+mrx_t4_a00_new/all:
+
+.PHONY : mrx_t4_a00_new/all
+
+# Convenience name for "clean" pass in the directory.
+mrx_t4_a00_new/clean:
+
+.PHONY : mrx_t4_a00_new/clean
+
+# Convenience name for "preinstall" pass in the directory.
+mrx_t4_a00_new/preinstall:
+
+.PHONY : mrx_t4_a00_new/preinstall
+
+#=============================================================================
+# Directory level rules for directory mrx_t4_a00_new_moveit_config
+
+# Convenience name for "all" pass in the directory.
+mrx_t4_a00_new_moveit_config/all:
+
+.PHONY : mrx_t4_a00_new_moveit_config/all
+
+# Convenience name for "clean" pass in the directory.
+mrx_t4_a00_new_moveit_config/clean:
+
+.PHONY : mrx_t4_a00_new_moveit_config/clean
+
+# Convenience name for "preinstall" pass in the directory.
+mrx_t4_a00_new_moveit_config/preinstall:
+
+.PHONY : mrx_t4_a00_new_moveit_config/preinstall
+
+#=============================================================================
 # Directory level rules for directory ros_exploring/robot_perception/ork_tutorials
 
 # Convenience name for "all" pass in the directory.
@@ -466,6 +502,7 @@ ros_exploring/robot_perception/ork_tutorials/all:
 
 # Convenience name for "clean" pass in the directory.
 ros_exploring/robot_perception/ork_tutorials/clean: ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/clean
+ros_exploring/robot_perception/ork_tutorials/clean: ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/clean
 
 .PHONY : ros_exploring/robot_perception/ork_tutorials/clean
 
@@ -478,7 +515,7 @@ ros_exploring/robot_perception/ork_tutorials/preinstall:
 # Target rules for target ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir
 
 # All Build rule for target.
-ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/all:
+ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/all: ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/all
 	$(MAKE) -f ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/build.make ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/depend
 	$(MAKE) -f ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/build.make ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jyk/catkin_ws/build/CMakeFiles --progress-num= "Built target sphinx-doc"
@@ -503,6 +540,38 @@ ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/clean:
 
 # clean rule for target.
 clean: ros_exploring/robot_perception/ork_tutorials/CMakeFiles/sphinx-doc.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir
+
+# All Build rule for target.
+ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/all:
+	$(MAKE) -f ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/build.make ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/depend
+	$(MAKE) -f ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/build.make ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jyk/catkin_ws/build/CMakeFiles --progress-num= "Built target object_recognition_tutorials-sphinx"
+.PHONY : ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/all
+
+# Build rule for subdir invocation for target.
+ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jyk/catkin_ws/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jyk/catkin_ws/build/CMakeFiles 0
+.PHONY : ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/rule
+
+# Convenience name for target.
+object_recognition_tutorials-sphinx: ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/rule
+
+.PHONY : object_recognition_tutorials-sphinx
+
+# clean rule for target.
+ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/clean:
+	$(MAKE) -f ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/build.make ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/clean
+.PHONY : ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/clean
+
+# clean rule for target.
+clean: ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/clean
 
 .PHONY : clean
 
@@ -2233,24 +2302,6 @@ ros_exploring/robot_perception/robot_voice/CMakeFiles/voice_assistant.dir/clean:
 clean: ros_exploring/robot_perception/robot_voice/CMakeFiles/voice_assistant.dir/clean
 
 .PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory mrx_t4_a00_new
-
-# Convenience name for "all" pass in the directory.
-mrx_t4_a00_new/all:
-
-.PHONY : mrx_t4_a00_new/all
-
-# Convenience name for "clean" pass in the directory.
-mrx_t4_a00_new/clean:
-
-.PHONY : mrx_t4_a00_new/clean
-
-# Convenience name for "preinstall" pass in the directory.
-mrx_t4_a00_new/preinstall:
-
-.PHONY : mrx_t4_a00_new/preinstall
 
 #=============================================================================
 # Directory level rules for directory action_tutorial
@@ -9335,24 +9386,6 @@ ros_exploring/robot_mrobot/mrobot_gazebo/clean:
 ros_exploring/robot_mrobot/mrobot_gazebo/preinstall:
 
 .PHONY : ros_exploring/robot_mrobot/mrobot_gazebo/preinstall
-
-#=============================================================================
-# Directory level rules for directory mrx_t4_a00_new_moveit_config
-
-# Convenience name for "all" pass in the directory.
-mrx_t4_a00_new_moveit_config/all:
-
-.PHONY : mrx_t4_a00_new_moveit_config/all
-
-# Convenience name for "clean" pass in the directory.
-mrx_t4_a00_new_moveit_config/clean:
-
-.PHONY : mrx_t4_a00_new_moveit_config/clean
-
-# Convenience name for "preinstall" pass in the directory.
-mrx_t4_a00_new_moveit_config/preinstall:
-
-.PHONY : mrx_t4_a00_new_moveit_config/preinstall
 
 #=============================================================================
 # Directory level rules for directory ros_exploring/ros_advanced/rviz_teleop_commander

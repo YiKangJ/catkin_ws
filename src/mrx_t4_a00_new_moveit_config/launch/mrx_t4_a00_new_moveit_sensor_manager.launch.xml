@@ -1,3 +1,9 @@
 <launch>
+    <!-- configure the set of sensor sources for Moveit! to use -->
+    <rosparam command="load" file="$(find mrx_t4_a00_new_moveit_config)/config/sensors_kinect_pointcloud.yaml" />
 
+    <!-- configure the Octomap -->
+    <param name="octomap_frame" type="string" value="odom_combined" />
+    <param name="octomap_resolution" type="double" value="0.05" />
+    <param name="max_range" type="double" value="5.0" />
 </launch>

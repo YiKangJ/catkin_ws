@@ -309,6 +309,19 @@ sphinx-doc/fast:
 .PHONY : sphinx-doc/fast
 
 #=============================================================================
+# Target rules for targets named object_recognition_tutorials-sphinx
+
+# Build rule for target.
+object_recognition_tutorials-sphinx: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 object_recognition_tutorials-sphinx
+.PHONY : object_recognition_tutorials-sphinx
+
+# fast build rule for target.
+object_recognition_tutorials-sphinx/fast:
+	$(MAKE) -f ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/build.make ros_exploring/robot_perception/ork_tutorials/CMakeFiles/object_recognition_tutorials-sphinx.dir/build
+.PHONY : object_recognition_tutorials-sphinx/fast
+
+#=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -3816,6 +3829,7 @@ help:
 	@echo "... gtest_main"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... sphinx-doc"
+	@echo "... object_recognition_tutorials-sphinx"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... test_kdl"

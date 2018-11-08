@@ -6,14 +6,24 @@ arm:
             - armA_to_armB
             - armB_to_armC
             - armC_to_armD
-        
-        gains:
-            base_to_armA: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-            armA_to_armB: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-            armB_to_armC: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-            armC_to_armD: {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+
+        #constraints:
+        #    base_to_armA:
+        #        goal: 0.1
+        #    armA_to_armB:
+        #        goal: 0.1
+        #    armB_to_armC:
+        #        goal: 0.1
+        #    armC_to_armD:
+        #        goal: 0.1
+
+        # gains:
+        #    base_to_armA: {p: 1, i: 1, d: 1, i_clamp: 0.0}
+        #    armA_to_armB: {p: 1, i: 1, d: 1, i_clamp: 0.0}
+        #    armB_to_armC: {p: 1, i: 1, d: 1, i_clamp: 0.0}
+        #    armC_to_armD: {p: 1.0, i: 1, d: 1, i_clamp: 0.0}
     
     # 发布关节状态
     joint_state_controller:
         type: joint_state_controller/JointStateController
-        publish_rate: 50
+        publish_rate: 10

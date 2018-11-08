@@ -7,6 +7,12 @@
   <xacro:property name="kinect_offset_z" value="1.2"/>
   <xacro:property name="M_PI" value="3.141592654"/>
 
+  <!-- fixed frame in gazebo -->
+  <link name="world" />
+  <joint name="world_base_link_joint" type="fixed">
+      <parent link="world" />
+      <child link="base_link"/>
+  </joint>
 
   <link name="base_link">
     <!--

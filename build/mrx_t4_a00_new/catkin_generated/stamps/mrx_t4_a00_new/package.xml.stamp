@@ -7,14 +7,18 @@
 for mrx_t4_a00_new robot</p>
   </description>
   <author>me</author>
-  <maintainer email="insistyxj@163.com" />
+  <maintainer email="jinyikangjyk@163.com" />
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roslaunch</build_depend>
-  <run_depend>robot_state_publisher</run_depend>
-  <run_depend>rviz</run_depend>
-  <run_depend>joint_state_publisher</run_depend>
-  <run_depend>gazebo</run_depend>
+  <!--
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>pcl_ros</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>pcl_ros</run_depend>
+  <run_depend>sensor_msgs</run_depend -->
   <export>
     <architecture_independent />
   </export>
